@@ -101,7 +101,7 @@
                                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">#3: Deploy via Forge</h2>
 
                                 <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    We build and deploy this website.
+                                    We build this landing page and deploy via Laravel Forge.
                                 </p>
                             </div>
 
