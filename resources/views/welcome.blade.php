@@ -46,7 +46,7 @@
 
                 </div>
 
-                <h1 style="color: white; font-size: 34px; font-weight: bold; text-align: center; margin-top: 24px;">Building Arc</h1>
+                <h1 style="color: rgb(116,65,244); font-size: 34px; font-weight: bold; text-align: center; margin-top: 24px;">Building Arc</h1>
 
                 <div style="margin-top: 44px;">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
