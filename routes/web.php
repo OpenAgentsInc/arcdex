@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
+// Route::get('/channel/building-arc', function () {
+//     return view('channel');
+// });
+
+Route::get('/video/{id}', [VideoController::class, 'show']);
 
 Route::get('/chat', function () {
     return view('chat');
