@@ -5,8 +5,15 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "@vitejs/plugin-react": "^3.1.0",
         "axios": "^1.1.2",
         "laravel-vite-plugin": "^0.7.2",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "@headlessui/react": "1.7.11",
+        "@heroicons/react": "2.0.16",
+        "react": "18.2.0",
+        "react-dom": "18.2.0"
     }
 }
