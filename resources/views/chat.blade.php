@@ -6,9 +6,9 @@
         <title>Arc</title>
         <link rel="icon" href="/img/logo.png" type="image/png" sizes="16x16">
         @viteReactRefresh
-        @vite('resources/js/app.jsx', 'resources/css/app.css')
+        @vite(['resources/js/app.jsx', 'resources/css/app.css'])
     </head>
-    <body>
-        <div id="root"></div>
+    <body class="h-screen w-screen">
+        <div id="root" class="h-full w-full"></div>
     </body>
 </html>

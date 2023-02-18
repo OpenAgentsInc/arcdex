@@ -1,17 +1,3 @@
-/*
-  This example requires some changes to your config:
-
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
 import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
@@ -27,18 +13,49 @@ import {
 } from '@heroicons/react/24/outline'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 
+const channels = [
+  //   { name: 'All', href: '#', icon: HomeIcon, current: true },
+  {
+    id: '12345',
+    name: 'Nostr',
+    current: true,
+    lastMessageTime: '08:42PM', //'2021-03-10T15:34:00.000000Z',
+    lastMessage: 'review my NIPs',
+    unread: 0,
+    author: 'Alice',
+  },
+  {
+    id: '67890',
+    name: 'Arc',
+    current: false,
+    lastMessageTime: '06:51PM', //'2021-03-10T15:34:00.000000Z',
+    lastMessage: 'nice app',
+    unread: 0,
+    author: 'Bob',
+  },
+  {
+    id: '67890',
+    name: 'Satoshi Nakamoto',
+    current: false,
+    lastMessageTime: '06:51PM', //'2021-03-10T15:34:00.000000Z',
+    lastMessage: 'have some bitcoin',
+    unread: 0,
+    author: null,
+  },
+]
+
 const navigation = [
-  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-  { name: 'Team', href: '#', icon: UsersIcon, current: false },
-  { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-  { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-  { name: 'Documents', href: '#', icon: InboxIcon, current: false },
-  { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
+  //   { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
+  //   { name: 'Team', href: '#', icon: UsersIcon, current: false },
+  //   { name: 'Projects', href: '#', icon: FolderIcon, current: false },
+  //   { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
+  //   { name: 'Documents', href: '#', icon: InboxIcon, current: false },
+  //   { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
 ]
 const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
+  //   { name: 'Your Profile', href: '#' },
+  //   { name: 'Settings', href: '#' },
+  //   { name: 'Sign out', href: '#' },
 ]
 
 function classNames(...classes) {
@@ -167,27 +184,27 @@ export default function Example() {
             </div>
             <div className="flex flex-1 flex-col overflow-y-auto">
               <nav className="flex-1 space-y-1 px-2 py-4">
-                {navigation.map((item) => (
+                {channels.map((channel) => (
                   <a
-                    key={item.name}
-                    href={item.href}
+                    key={channel.name}
+                    href={`chat/${channel.id}`}
                     className={classNames(
-                      item.current
+                      channel.current
                         ? 'bg-gray-900 text-white'
                         : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
+                      'flex-row group flex items-start px-2 py-2 text-md rounded-md justify-between'
                     )}
                   >
-                    <item.icon
-                      className={classNames(
-                        item.current
-                          ? 'text-gray-300'
-                          : 'text-gray-400 group-hover:text-gray-300',
-                        'mr-3 flex-shrink-0 h-6 w-6'
-                      )}
-                      aria-hidden="true"
-                    />
-                    {item.name}
+                    <div className="flex-col">
+                      <p className="font-bold mb-1">{channel.name}</p>
+                      <p className="line-clamp-1">
+                        {channel.author}
+                        {channel.author ? ': ' : ''} {channel.lastMessage}
+                      </p>
+                    </div>
+                    <p className="opacity-50 text-sm">
+                      {channel.lastMessageTime}
+                    </p>
                   </a>
                 ))}
               </nav>
@@ -283,9 +300,9 @@ export default function Example() {
           <main className="flex-1">
             <div className="py-6">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
-                <h1 className="text-2xl font-semibold text-gray-900">
-                  Dashboard
-                </h1>
+                {/* <h1 className="text-2xl font-semibold text-gray-900">
+                  Chatroom 1
+                </h1> */}
               </div>
               <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
                 {/* Replace with your content */}
