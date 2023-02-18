@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full dark">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +8,7 @@
         @viteReactRefresh
         @vite(['resources/js/app.jsx', 'resources/css/app.css'])
     </head>
-    <body class="h-screen w-screen">
-        <div id="root" class="h-full w-full"></div>
+    <body class="h-full dark:bg-gray-700">
+        <div id="root" class="h-full"></div>
     </body>
 </html>
