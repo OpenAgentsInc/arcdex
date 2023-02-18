@@ -45,6 +45,15 @@ class VideoController extends Controller
                     'name' => 'Christopher David'
                 ]
             ],
+            [
+                'id' => 5,
+                'title' => 'Video Player',
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc5.mp4',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
+            ],
         ];
 
         try {
