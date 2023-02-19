@@ -4,6 +4,24 @@ use App\Models\Channel;
 use App\Models\Message;
 use App\Models\User;
 
+test('user can join a channel', function () {
+    $user = User::factory()->create();
+    $channel = Channel::factory()->create();
+
+    $this->actingAs($user);
+
+    $response = $this->post('/api/channels/' . $channel->id . '/join');
+
+    $response->assertStatus(200)
+        ->assertJson([
+            'data' => [
+                'id' => $channel->id,
+                'title' => $channel->title,
+                'joined' => true,
+            ],
+        ]);
+});
+
 test('user can fetch channels from API endpoint', function () {
     $channels = Channel::factory()->hasMessages(5)->count(4)->create();
 

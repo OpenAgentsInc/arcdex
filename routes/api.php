@@ -34,6 +34,18 @@ Route::middleware('auth:sanctum')->get('/channels', function (Request $request) 
     ];
 });
 
+Route::middleware('auth:sanctum')->post('/channels/{channel}/join', function (Request $request, Channel $channel) {
+    $channel->users()->syncWithoutDetaching($request->user()->id);
+
+    return [
+        'data' => [
+            'id' => $channel->id,
+            'title' => $channel->title,
+            'joined' => true,
+        ]
+    ];
+});
+
 Route::middleware('auth:sanctum')->get('/messages', function (Request $request) {
     $messages = Message::with('user')->get();
     return [
