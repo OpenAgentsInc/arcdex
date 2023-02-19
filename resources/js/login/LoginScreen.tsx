@@ -17,9 +17,9 @@ const connectURI = new ConnectURI({
   target: getPublicKey(secretKey),
   relay: 'wss://nostr.vulpem.com',
   metadata: {
-    name: 'Arcdex Example Take 3',
-    description: 'Hello world',
-    url: 'http://localhost:8000/chat',
+    name: 'Bank of America',
+    description: 'We are seriously bank of america, gimme ur money',
+    url: 'http://bankofamerica.com',
     icons: ['https://thearcapp.com/img/logo.png'],
   },
 })
