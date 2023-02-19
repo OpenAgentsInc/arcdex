@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\VideoController;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -46,6 +47,22 @@ Route::post('/login', function (Request $request) {
             'errors' => $validator->errors()
         ], 422);
     }
+
+    $pubkey = $request->input('pubkey');
+    // find the user with this pubkey
+    $user = User::where('pubkey', $pubkey)->first();
+    // if no user, return error
+    if (!$user) {
+        return response()->json([
+            'message' => 'error',
+            'errors' => [
+                'user' => 'User not found'
+            ]
+        ], 404);
+    }
+
+    // otherwise log in the user
+    Auth::login($user);
 
     return response()->json([
         'message' => 'success'

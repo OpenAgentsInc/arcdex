@@ -32,16 +32,29 @@ export const LoginScreen = () => {
   const [schnorrSig, setSchnorrSig] = useState('')
 
   const login = async () => {
-    console.log('lets log in')
-
-    const res = await axios.get('/sanctum/csrf-cookie', {
+    await axios.get('/sanctum/csrf-cookie', {
       headers: {
         'Content-Type': 'application/json',
       },
     })
-    console.log(res)
 
-    console.log('and then')
+    try {
+      const res2 = await axios.post(
+        '/login',
+        {
+          pubkey,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+
+      console.log('res2: ', res2.data)
+    } catch (error) {
+      alert(error.response.data.errors.user)
+    }
   }
 
   useEffect(() => {
