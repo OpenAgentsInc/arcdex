@@ -67,6 +67,16 @@ class VideoController extends Controller
                     'name' => 'Christopher David'
                 ]
             ],
+            [
+                'id' => 7,
+                'title' => 'Nostr Connect',
+                'subtitle' => "We integrate Nostr Connect (NIP-46) to get the user's public key from a signer app.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc7.mov',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
+            ],
         ];
 
         try {
