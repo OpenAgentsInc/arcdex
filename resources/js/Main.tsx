@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from 'react'
+import * as React from 'react'
+import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
   Bars3BottomLeftIcon,
