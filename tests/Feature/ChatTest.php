@@ -51,7 +51,58 @@ test('user can leave a channel', function () {
         ]);
 });
 
-test('user can fetch channels from API endpoint', function () {
+test('user can fetch only channels theyve joined', function () {
+    $user = User::factory()->create();
+    $channels = Channel::factory()->count(4)->create();
+
+    $this->actingAs($user);
+
+    $response = $this->get('/api/channels');
+
+    $response->assertStatus(200)
+        ->assertJsonCount(0, 'data');
+
+    $channels[0]->users()->syncWithoutDetaching($user->id);
+
+    $response = $this->get('/api/channels');
+
+    $response->assertStatus(200)
+        ->assertJsonCount(1, 'data')
+        ->assertJson([
+            'data' => [
+                [
+                    'id' => $channels[0]->id,
+                    'title' => $channels[0]->title,
+                ],
+            ],
+        ]);
+
+    $channels[1]->users()->syncWithoutDetaching($user->id);
+    $channels[2]->users()->syncWithoutDetaching($user->id);
+
+    $response = $this->get('/api/channels');
+
+    $response->assertStatus(200)
+        ->assertJsonCount(3, 'data')
+        ->assertJson([
+            'data' => [
+                [
+                    'id' => $channels[0]->id,
+                    'title' => $channels[0]->title,
+                ],
+                [
+                    'id' => $channels[1]->id,
+                    'title' => $channels[1]->title,
+                ],
+                [
+                    'id' => $channels[2]->id,
+                    'title' => $channels[2]->title,
+                ],
+            ],
+        ]);
+});
+
+test('user can fetch channels', function () {
     $channels = Channel::factory()->hasMessages(5)->count(4)->create();
 
     $this->actingAs(User::factory()->create());
@@ -135,7 +186,7 @@ test('user can fetch channels from API endpoint', function () {
         ]);
 });
 
-test('user can fetch messages from API endpoint', function () {
+test('user can fetch messages', function () {
     $messages = Message::factory()->count(5)->create();
 
     $this->actingAs(User::factory()->create());

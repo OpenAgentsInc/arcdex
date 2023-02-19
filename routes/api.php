@@ -21,12 +21,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->get('/channels', function (Request $request) {
-    $channels = Channel::with(['messages' => function($q) {
+    // $channels = Channel::with(['messages' => function($q) {
+    //     $q->latest();
+    // }])->get();
+
+    // Retrieve only channels that the user has joined, and eager load the last message
+    $channels = $request->user()->channels()->with(['messages' => function($q) {
         $q->latest();
     }])->get();
 
+
     foreach ($channels as $channel) {
-        $channel['lastMessage'] = $channel->messages->first()->load('user');
+        try {
+            $channel['lastMessage'] = $channel->messages->first()->load('user');
+        } catch (Throwable $e) {
+            $channel['lastMessage'] = null;
+        }
     }
 
     return [
