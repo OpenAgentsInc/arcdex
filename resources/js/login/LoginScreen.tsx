@@ -7,6 +7,7 @@ import {
   connectToRelay,
   ConnectURI,
 } from '@nostr-connect/connect'
+import axios from 'axios'
 
 import { QRCodeSVG } from 'qrcode.react'
 import { getEventHash, getPublicKey, Event } from 'nostr-tools'
@@ -30,6 +31,19 @@ export const LoginScreen = () => {
   const [eventWithSig, setEvent] = useState({})
   const [schnorrSig, setSchnorrSig] = useState('')
 
+  const login = async () => {
+    console.log('lets log in')
+
+    const res = await axios.get('/sanctum/csrf-cookie', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    console.log(res)
+
+    console.log('and then')
+  }
+
   useEffect(() => {
     ;(async () => {
       const target = pubkey.length > 0 ? pubkey : undefined
@@ -39,6 +53,8 @@ export const LoginScreen = () => {
       })
       connect.events.on('connect', (pubkey: string) => {
         setPubkey(pubkey)
+
+        console.log('Connected with pubkey:', pubkey)
       })
       connect.events.on('disconnect', () => {
         setEvent({})
@@ -57,6 +73,7 @@ export const LoginScreen = () => {
     })
     const pk = await connect.getPublicKey()
     setGetPublicKeyReply(pk)
+    console.log('We grabbed the public key: ', pk)
   }
 
   const sendMessage = async () => {
@@ -176,7 +193,17 @@ export const LoginScreen = () => {
           </div>
         )}
         {isConnected() && (
-          <div className="notification is-dark">
+          <div className="flex flex-col">
+            <div className="w-48 bg-gray-800 flex justify-center items-center py-6 rounded-xl m-4">
+              <button
+                type="button"
+                className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                onClick={login}
+              >
+                Log in
+              </button>
+            </div>
+
             <div className="content">
               <h2 className="title is-5 has-text-white">Get Public Key</h2>
               <button

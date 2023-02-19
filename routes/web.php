@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\VideoController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,4 +33,21 @@ Route::get('/chat', function () {
 
 Route::get('/login', function () {
     return view('login');
+});
+
+Route::post('/login', function (Request $request) {
+    $validator = Validator::make($request->all(), [
+        'pubkey' => 'required'
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'message' => 'error',
+            'errors' => $validator->errors()
+        ], 422);
+    }
+
+    return response()->json([
+        'message' => 'success'
+    ], 200);
 });
