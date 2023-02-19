@@ -27,3 +27,7 @@ Route::get('/video/{id}', [VideoController::class, 'show']);
 Route::get('/chat', function () {
     return view('chat');
 });
+
+Route::get('/login', function () {
+    return view('login');
+});
