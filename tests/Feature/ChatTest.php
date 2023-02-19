@@ -22,6 +22,35 @@ test('user can join a channel', function () {
         ]);
 });
 
+test('user can leave a channel', function () {
+    $user = User::factory()->create();
+    $channel = Channel::factory()->create();
+
+    $this->actingAs($user);
+
+    $response = $this->post('/api/channels/' . $channel->id . '/join');
+
+    $response->assertStatus(200)
+        ->assertJson([
+            'data' => [
+                'id' => $channel->id,
+                'title' => $channel->title,
+                'joined' => true,
+            ],
+        ]);
+
+    $response = $this->delete('/api/channels/' . $channel->id . '/join');
+
+    $response->assertStatus(200)
+        ->assertJson([
+            'data' => [
+                'id' => $channel->id,
+                'title' => $channel->title,
+                'joined' => false,
+            ],
+        ]);
+});
+
 test('user can fetch channels from API endpoint', function () {
     $channels = Channel::factory()->hasMessages(5)->count(4)->create();
 
