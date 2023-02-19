@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\Channel;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Message>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Channel>
  */
-class MessageFactory extends Factory
+class ChannelFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,9 +19,8 @@ class MessageFactory extends Factory
     public function definition(): array
     {
         return [
-            'channel_id' => Channel::factory(),
-            'user_id' => User::factory(),
-            'text' => $this->faker->sentence,
+            // 'user_id' => User::factory(),
+            'title' => $this->faker->words(3, true),
         ];
     }
 

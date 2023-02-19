@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Channel;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::middleware('auth:sanctum')->get('/channels', function (Request $request) {
+    $channels = Channel::with(['messages' => function($q) {
+        $q->latest();
+    }])->get();
+
+    foreach ($channels as $channel) {
+        $channel['lastMessage'] = $channel->messages->first()->load('user');
+    }
+
+    return [
+        'data' => $channels
+    ];
 });
 
 Route::middleware('auth:sanctum')->get('/messages', function (Request $request) {

@@ -1,7 +1,92 @@
 <?php
 
+use App\Models\Channel;
 use App\Models\Message;
 use App\Models\User;
+
+test('user can fetch channels from API endpoint', function () {
+    $channels = Channel::factory()->hasMessages(5)->count(4)->create();
+
+    $this->actingAs(User::factory()->create());
+
+    $response = $this->get('/api/channels');
+
+    $response->assertStatus(200)
+        ->assertJsonCount(4, 'data')
+        ->assertJsonStructure([
+            'data' => [
+                '*' => [
+                    'id',
+                    'title',
+                    'lastMessage' => [
+                        'id',
+                        'text',
+                        'user' => [
+                            'id',
+                            'name',
+                        ],
+                        'created_at',
+                    ],
+                ],
+            ],
+        ])
+        ->assertJson([
+            'data' => [
+                [
+                    'id' => 1,
+                    'title' => $channels[0]->title,
+                    'lastMessage' => [
+                        'id' => $channels[0]->messages[0]->id,
+                        'text' => $channels[0]->messages[0]->text,
+                        'user' => [
+                            'id' => $channels[0]->messages[0]->user_id,
+                            'name' => $channels[0]->messages[0]->user->name,
+                        ],
+                        'created_at' => $channels[0]->messages[0]->created_at->format('Y-m-d\TH:i:s.u\Z')
+                    ],
+                ],
+                [
+                    'id' => 2,
+                    'title' => $channels[1]->title,
+                    'lastMessage' => [
+                        'id' => $channels[1]->messages[0]->id,
+                        'text' => $channels[1]->messages[0]->text,
+                        'user' => [
+                            'id' => $channels[1]->messages[0]->user_id,
+                            'name' => $channels[1]->messages[0]->user->name,
+                        ],
+                        'created_at' => $channels[1]->messages[0]->created_at->format('Y-m-d\TH:i:s.u\Z')
+                    ],
+                ],
+                [
+                    'id' => 3,
+                    'title' => $channels[2]->title,
+                    'lastMessage' => [
+                        'id' => $channels[2]->messages[0]->id,
+                        'text' => $channels[2]->messages[0]->text,
+                        'user' => [
+                            'id' => $channels[2]->messages[0]->user_id,
+                            'name' => $channels[2]->messages[0]->user->name,
+                        ],
+                        'created_at' => $channels[2]->messages[0]->created_at->format('Y-m-d\TH:i:s.u\Z')
+                    ],
+                ],
+                [
+                    'id' => 4,
+                    'title' => $channels[3]->title,
+                    'lastMessage' => [
+                        'id' => $channels[3]->messages[0]->id,
+                        'text' => $channels[3]->messages[0]->text,
+                        'user' => [
+                            'id' => $channels[3]->messages[0]->user_id,
+                            'name' => $channels[3]->messages[0]->user->name,
+                        ],
+                        'created_at' => $channels[3]->messages[0]->created_at->format('Y-m-d\TH:i:s.u\Z')
+                    ],
+                ]
+            ],
+        ]);
+});
 
 test('user can fetch messages from API endpoint', function () {
     $messages = Message::factory()->count(5)->create();
