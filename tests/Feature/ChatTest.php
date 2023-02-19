@@ -51,6 +51,52 @@ test('user can leave a channel', function () {
         ]);
 });
 
+test('user can optionally fetch only channels they havent joined', function () {
+    $user = User::factory()->create();
+    $channels = Channel::factory()->count(4)->create();
+
+    $this->actingAs($user);
+
+    $channels[0]->users()->syncWithoutDetaching($user->id);
+
+    $response = $this->get('/api/channels?joined=false');
+
+    $response->assertStatus(200)
+        ->assertJsonCount(3, 'data')
+        ->assertJson([
+            'data' => [
+                [
+                    'id' => $channels[1]->id,
+                    'title' => $channels[1]->title,
+                ],
+                [
+                    'id' => $channels[2]->id,
+                    'title' => $channels[2]->title,
+                ],
+                [
+                    'id' => $channels[3]->id,
+                    'title' => $channels[3]->title,
+                ],
+            ],
+        ]);
+
+    $channels[1]->users()->syncWithoutDetaching($user->id);
+    $channels[2]->users()->syncWithoutDetaching($user->id);
+
+    $response = $this->get('/api/channels?joined=false');
+
+    $response->assertStatus(200)
+        ->assertJsonCount(1, 'data')
+        ->assertJson([
+            'data' => [
+                [
+                    'id' => $channels[3]->id,
+                    'title' => $channels[3]->title,
+                ],
+            ],
+        ]);
+});
+
 test('user can fetch only channels theyve joined', function () {
     $user = User::factory()->create();
     $channels = Channel::factory()->count(4)->create();
@@ -102,10 +148,16 @@ test('user can fetch only channels theyve joined', function () {
         ]);
 });
 
-test('user can fetch channels', function () {
+test('user can fetch channels with the right data', function () {
+    $user = User::factory()->create();
     $channels = Channel::factory()->hasMessages(5)->count(4)->create();
 
-    $this->actingAs(User::factory()->create());
+    $channels[0]->users()->syncWithoutDetaching($user->id);
+    $channels[1]->users()->syncWithoutDetaching($user->id);
+    $channels[2]->users()->syncWithoutDetaching($user->id);
+    $channels[3]->users()->syncWithoutDetaching($user->id);
+
+    $this->actingAs($user);
 
     $response = $this->get('/api/channels');
 
@@ -186,7 +238,7 @@ test('user can fetch channels', function () {
         ]);
 });
 
-test('user can fetch messages', function () {
+test('user can fetch messages with the right data', function () {
     $messages = Message::factory()->count(5)->create();
 
     $this->actingAs(User::factory()->create());

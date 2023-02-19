@@ -21,15 +21,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->get('/channels', function (Request $request) {
-    // $channels = Channel::with(['messages' => function($q) {
-    //     $q->latest();
-    // }])->get();
-
-    // Retrieve only channels that the user has joined, and eager load the last message
-    $channels = $request->user()->channels()->with(['messages' => function($q) {
-        $q->latest();
-    }])->get();
-
+    // Check for joined query param
+    if ($request->query('joined') === 'false') {
+        // Retrieve only channels that the user has not joined, and eager load the last message
+        $channels = Channel::whereDoesntHave('users', function ($q) use ($request) {
+            $q->where('user_id', $request->user()->id);
+        })->with(['messages' => function($q) {
+            $q->latest();
+        }])->get();
+    } else {
+        // Retrieve only channels that the user has joined, and eager load the last message
+        $channels = $request->user()->channels()->with(['messages' => function($q) {
+            $q->latest();
+        }])->get();
+    }
 
     foreach ($channels as $channel) {
         try {
