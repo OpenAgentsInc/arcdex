@@ -32,7 +32,7 @@ export const LoginScreen = () => {
   const [schnorrSig, setSchnorrSig] = useState('')
 
   const fetchChannels = async () => {
-    const res = await axios.get('/api/channels', {
+    const res = await axios.get('/api/channels?joined=false', {
       headers: {
         'Content-Type': 'application/json',
       },
