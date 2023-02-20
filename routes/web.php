@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\VideoController;
 use App\Models\Channel;
@@ -30,7 +31,7 @@ Route::get('/', function () {
 
 Route::get('/video/{id}', [VideoController::class, 'show']);
 
-Route::get('/chat', [ChatController::class, 'index'])->middleware('auth');
+Route::get('/chat', [ChatController::class, 'index'])->middleware('auth')->name('chat');
 
 // Route::get('/chat', function () {
 //     return view('chat');
@@ -79,6 +80,7 @@ Route::post('/login', function (Request $request) {
     ], 200);
 });
 
+Route::middleware('auth:sanctum')->post('/api/channels', [ChannelController::class, 'store']);
 
 Route::middleware('auth:sanctum')->get('/api/channels', function (Request $request) {
     // Check for joined query param
