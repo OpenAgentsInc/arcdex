@@ -10,9 +10,8 @@ class ChatController extends Controller
 {
     public function index()
     {
-        $user = User::find(1);
         return Inertia::render('Chat/ChatHome', [
-            'channels' => $user->channels->map(function ($channel) {
+            'channels' => auth()->user()->channels->map(function ($channel) {
                 return [
                     'id' => $channel->id,
                     'title' => $channel->title,
