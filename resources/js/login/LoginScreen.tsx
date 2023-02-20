@@ -31,6 +31,21 @@ export const LoginScreen = () => {
   const [eventWithSig, setEvent] = useState({})
   const [schnorrSig, setSchnorrSig] = useState('')
 
+  const logout = async () => {
+    console.log('logging out...')
+    await disconnect()
+    await axios.post(
+      '/logout',
+      {},
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
+    console.log('logged out?')
+  }
+
   const fetchChannels = async () => {
     const res = await axios.get('/api/channels', {
       headers: {
@@ -233,6 +248,13 @@ export const LoginScreen = () => {
                 onClick={fetchChannels}
               >
                 Fetch channels
+              </button>
+              <button
+                type="button"
+                className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                onClick={logout}
+              >
+                Log out
               </button>
             </div>
 
