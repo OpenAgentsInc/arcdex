@@ -33,6 +33,11 @@ Route::get('/video/{id}', [VideoController::class, 'show']);
 
 Route::get('/chat', [ChatController::class, 'index'])->middleware('auth')->name('chat');
 
+Route::any('/logout', function () {
+    Auth::logout();
+    return redirect()->route('home');
+})->name('logout');
+
 // Route::get('/chat', function () {
 //     return view('chat');
 // });
