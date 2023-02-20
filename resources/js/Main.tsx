@@ -9,6 +9,9 @@ import {
 import { Message } from './Message'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 
+// import inertia
+import { useForm } from '@inertiajs/react'
+
 const messages = [
   {
     id: '1',
@@ -170,6 +173,22 @@ function classNames(...classes) {
 export function ChatDemo({ channels }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
+  const { data, setData, post, processing, errors } = useForm({
+    title: '',
+  })
+
+  const createChannel = (e) => {
+    e.preventDefault()
+    // create a random 5-character string
+    const randomString = Math.random().toString(36).substring(2, 7)
+    const channelName = `Demo Channel ${randomString}`
+
+    console.log('create channel', channelName)
+
+    // send an Inertia post request to create the channel
+    post('/api/channels')
+  }
+
   return (
     <div>
       <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -284,6 +303,23 @@ export function ChatDemo({ channels }) {
           </div>
           <div className="flex flex-1 flex-col overflow-y-auto">
             <nav className="flex-1 space-y-1 px-2 py-4">
+              <form onSubmit={createChannel}>
+                <input
+                  type="text"
+                  value={data.title}
+                  onChange={(e) => setData('title', e.target.value)}
+                />
+                {errors.title && (
+                  <div className="text-sm text-red-500">{errors.title}</div>
+                )}
+                <button
+                  type="submit"
+                  className="flex items-center justify-center w-full px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Create Channel
+                </button>
+              </form>
+
               {channels.map((channel) => (
                 <a
                   key={channel.id}
