@@ -77,6 +77,16 @@ class VideoController extends Controller
                     'name' => 'Christopher David'
                 ]
             ],
+            [
+                'id' => 8,
+                'title' => 'API Authentication',
+                'subtitle' => "We authenticate the Nostr Connect user with our API using Laravel Sanctum.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc8.mp4',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
+            ],
         ];
 
         try {
