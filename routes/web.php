@@ -42,6 +42,12 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::post('/login', function (Request $request) {
+
+    // if user is already logged in, dd with error message
+    if (Auth::check()) {
+        dd('User already logged in');
+    }
+
     $validator = Validator::make($request->all(), [
         'pubkey' => 'required'
     ]);
