@@ -1,8 +1,6 @@
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { useStatePersist } from 'use-state-persist'
-
-import * as ReactDOM from 'react-dom'
 import {
   broadcastToRelay,
   Connect,

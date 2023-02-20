@@ -11,6 +11,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 
 // import inertia
 import { useForm } from '@inertiajs/react'
+import { Event, getEventHash } from 'nostr-tools'
 
 const messages = [
   {
@@ -177,16 +178,27 @@ export function ChatDemo({ channels }) {
     title: '',
   })
 
-  const createChannel = (e) => {
+  const createChannel = async (e) => {
     e.preventDefault()
-    // create a random 5-character string
-    const randomString = Math.random().toString(36).substring(2, 7)
-    const channelName = `Demo Channel ${randomString}`
-
-    console.log('create channel', channelName)
-
-    // send an Inertia post request to create the channel
-    post('/api/channels')
+    // post('/api/channels')
+    let chan = {}
+    chan['about'] = ''
+    chan['name'] = name
+    chan['picture'] = 'https://placekitten.com/200/200'
+    const now = Math.floor(Date.now() / 1000)
+    const note = JSON.stringify(chan)
+    let event: Event = {
+      content: note,
+      created_at: now,
+      kind: 40,
+      tags: [],
+      pubkey:
+        '696da2ff3bab02510a3e4a5b70d370140774e174f3a0ebf5d2dc8a376d1232ec',
+    }
+    event.id = getEventHash(event)
+    event.sig = await connect.signEvent(event)
+    console.log('event', event)
+    // var signedEvent = await getSignedEvent(event, privKey)
   }
 
   return (

@@ -2,31 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\CreateNostrChannel;
 use App\Models\Channel;
-// use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 
 class ChannelController extends Controller
 {
-    public function store(Request $request)
+    public function store()
     {
-        // $title = Request::input('title');
-        // $what = Request::validate([
-        //     'title' => ['required', 'max:50'],
-        // ]);
-
+        // Create a channel in our database
         $channel = Channel::create(Request::validate([
             'title' => ['required', 'max:50'],
         ]));
-        // dd($channel);
-        // $request->validate([
-        //     // 'title' => ['required', 'max:50'],
-        // ])
-        // dd($channel);
 
+        // User who created the channel is automatically added to the channel
         $channel->users()->attach(auth()->user());
 
+        // Create the channel on Nostr
+        CreateNostrChannel::dispatch($channel);
+
+        // Redirect back to the chat page
         return Redirect::route('chat')->with('success', 'Channel created.');
     }
 }

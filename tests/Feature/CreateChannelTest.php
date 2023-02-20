@@ -1,8 +1,11 @@
 <?php
 
+use App\Jobs\CreateNostrChannel;
 use App\Models\User;
+use Illuminate\Support\Facades\Queue;
 
 test('user can create a channel', function () {
+    Queue::fake();
     $user = User::factory()->create();
 
     $this->actingAs($user);
@@ -30,4 +33,9 @@ test('user can create a channel', function () {
 
     // assert that the user belongs to the channel
     expect($user->channels->first()->id)->toBe(1);
+
+    // asser that a CreateNostrChannel job was pushed
+    Queue::assertPushed(CreateNostrChannel::class, function ($job) {
+        return $job->channel->id === 1;
+    });
 });
