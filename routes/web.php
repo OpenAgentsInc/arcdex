@@ -42,10 +42,9 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::post('/login', function (Request $request) {
-
-    // if user is already logged in, dd with error message
+    // if user is already logged in, log them out
     if (Auth::check()) {
-        dd('User already logged in');
+        Auth::logout();
     }
 
     $validator = Validator::make($request->all(), [
