@@ -22,6 +22,7 @@
     "dependencies": {
         "@headlessui/react": "1.7.11",
         "@heroicons/react": "2.0.16",
+        "@inertiajs/react": "^1.0.2",
         "@nostr-connect/connect": "^0.2.3",
         "nostr-tools": "^1.5.0",
         "qrcode.react": "^3.1.0",

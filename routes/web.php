@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\VideoController;
 use App\Models\Channel;
 use App\Models\User;
@@ -29,9 +30,11 @@ Route::get('/', function () {
 
 Route::get('/video/{id}', [VideoController::class, 'show']);
 
-Route::get('/chat', function () {
-    return view('chat');
-});
+Route::get('/chat', [ChatController::class, 'index']);
+
+// Route::get('/chat', function () {
+//     return view('chat');
+// });
 
 Route::get('/login', function () {
     return view('login');
