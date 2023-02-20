@@ -97,6 +97,16 @@ class VideoController extends Controller
                     'name' => 'Christopher David'
                 ]
             ],
+            [
+                'id' => 10,
+                'title' => 'Creating Channels, Part 1',
+                'subtitle' => "We allow authenticated users to create chat channels in our database.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc10.mp4',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
+            ],
         ];
 
         try {
