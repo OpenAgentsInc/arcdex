@@ -110,44 +110,44 @@ const messages = [
   },
 ]
 
-const channels = [
-  {
-    id: '12345',
-    name: 'Nostr',
-    current: true,
-    lastMessageTime: '08:42PM', //'2021-03-10T15:34:00.000000Z',
-    lasttext: 'review my NIPs',
-    unread: 0,
-    author: 'Alice',
-  },
-  {
-    id: '67890',
-    name: 'Arc',
-    current: false,
-    lastMessageTime: '06:51PM', //'2021-03-10T15:34:00.000000Z',
-    lasttext: 'nice app',
-    unread: 0,
-    author: 'Bob',
-  },
-  {
-    id: '412312',
-    name: 'Faerie',
-    current: false,
-    lastMessageTime: '04:51PM', //'2021-03-10T15:34:00.000000Z',
-    lasttext: 'Here is the report you asked for.',
-    unread: 0,
-    author: null,
-  },
-  {
-    id: '67890',
-    name: 'Satoshi Nakamoto',
-    current: false,
-    lastMessageTime: '06:51PM', //'2021-03-10T15:34:00.000000Z',
-    lasttext: 'have some bitcoin',
-    unread: 0,
-    author: null,
-  },
-]
+// const channels = [
+//   {
+//     id: '12345',
+//     name: 'Nostr',
+//     current: true,
+//     lastMessageTime: '08:42PM', //'2021-03-10T15:34:00.000000Z',
+//     lasttext: 'review my NIPs',
+//     unread: 0,
+//     author: 'Alice',
+//   },
+//   {
+//     id: '67890',
+//     name: 'Arc',
+//     current: false,
+//     lastMessageTime: '06:51PM', //'2021-03-10T15:34:00.000000Z',
+//     lasttext: 'nice app',
+//     unread: 0,
+//     author: 'Bob',
+//   },
+//   {
+//     id: '412312',
+//     name: 'Faerie',
+//     current: false,
+//     lastMessageTime: '04:51PM', //'2021-03-10T15:34:00.000000Z',
+//     lasttext: 'Here is the report you asked for.',
+//     unread: 0,
+//     author: null,
+//   },
+//   {
+//     id: '67890',
+//     name: 'Satoshi Nakamoto',
+//     current: false,
+//     lastMessageTime: '06:51PM', //'2021-03-10T15:34:00.000000Z',
+//     lasttext: 'have some bitcoin',
+//     unread: 0,
+//     author: null,
+//   },
+// ]
 
 const navigation = [
   //   { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
@@ -167,7 +167,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export function ChatDemo({ channels }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
@@ -286,7 +286,7 @@ export default function Example() {
             <nav className="flex-1 space-y-1 px-2 py-4">
               {channels.map((channel) => (
                 <a
-                  key={channel.name}
+                  key={channel.id}
                   href={`chat/${channel.id}`}
                   className={classNames(
                     channel.current
@@ -296,7 +296,7 @@ export default function Example() {
                   )}
                 >
                   <div className="flex-col">
-                    <p className="font-bold mb-1">{channel.name}</p>
+                    <p className="font-bold mb-1">{channel.title}</p>
                     <p className="line-clamp-1">
                       {channel.author}
                       {channel.author ? ': ' : ''} {channel.lasttext}
