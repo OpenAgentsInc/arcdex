@@ -30,7 +30,7 @@ Route::get('/', function () {
 
 Route::get('/video/{id}', [VideoController::class, 'show']);
 
-Route::get('/chat', [ChatController::class, 'index']);
+Route::get('/chat', [ChatController::class, 'index'])->middleware('auth');
 
 // Route::get('/chat', function () {
 //     return view('chat');
@@ -38,7 +38,7 @@ Route::get('/chat', [ChatController::class, 'index']);
 
 Route::get('/login', function () {
     return view('login');
-});
+})->name('login');
 
 Route::post('/login', function (Request $request) {
     $validator = Validator::make($request->all(), [

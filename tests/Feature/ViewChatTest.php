@@ -4,9 +4,9 @@ use App\Models\Channel;
 use App\Models\User;
 use Inertia\Testing\AssertableInertia;
 
-test('chat page renders for guest', function () {
+test('chat page redirects guest to login page', function () {
     $this->get('/chat')
-        ->assertStatus(200);
+        ->assertRedirect('/login');
 });
 
 test('chat page renders for authenticated user', function () {
