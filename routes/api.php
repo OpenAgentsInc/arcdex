@@ -20,34 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->get('/channels', function (Request $request) {
-    // Check for joined query param
-    if ($request->query('joined') === 'false') {
-        // Retrieve only channels that the user has not joined, and eager load the last message
-        $channels = Channel::whereDoesntHave('users', function ($q) use ($request) {
-            $q->where('user_id', $request->user()->id);
-        })->with(['messages' => function($q) {
-            $q->latest();
-        }])->get();
-    } else {
-        // Retrieve only channels that the user has joined, and eager load the last message
-        $channels = $request->user()->channels()->with(['messages' => function($q) {
-            $q->latest();
-        }])->get();
-    }
 
-    foreach ($channels as $channel) {
-        try {
-            $channel['lastMessage'] = $channel->messages->first()->load('user');
-        } catch (Throwable $e) {
-            $channel['lastMessage'] = null;
-        }
-    }
-
-    return [
-        'data' => $channels
-    ];
-});
 
 Route::middleware('auth:sanctum')->post('/channels/{channel}/join', function (Request $request, Channel $channel) {
     $channel->users()->syncWithoutDetaching($request->user()->id);

@@ -59,3 +59,20 @@ test('login endpoint logs in a user', function () {
             ]
         ]);
 });
+
+test('login endpoint creates a new user if none exists', function () {
+    $this->post('/login', [
+        'pubkey' => '12345'
+    ])
+        ->assertStatus(200)
+        ->assertValid()
+        ->assertJson([
+            'message' => 'success'
+        ]);
+
+    $this->assertAuthenticated();
+
+    $this->assertDatabaseHas('users', [
+        'pubkey' => '12345'
+    ]);
+});

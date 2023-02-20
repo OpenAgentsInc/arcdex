@@ -31,12 +31,24 @@ export const LoginScreen = () => {
   const [eventWithSig, setEvent] = useState({})
   const [schnorrSig, setSchnorrSig] = useState('')
 
+  const fetchChannels = async () => {
+    const res = await axios.get('/api/channels', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    console.log('res: ', res.data)
+  }
+
   const login = async () => {
     await axios.get('/sanctum/csrf-cookie', {
       headers: {
         'Content-Type': 'application/json',
       },
     })
+
+    console.log(pubkey)
 
     try {
       const res2 = await axios.post(
@@ -207,13 +219,20 @@ export const LoginScreen = () => {
         )}
         {isConnected() && (
           <div className="flex flex-col">
-            <div className="w-48 bg-gray-800 flex justify-center items-center py-6 rounded-xl m-4">
+            <div className="max-w-xl bg-gray-800 flex justify-center items-center py-6 rounded-xl m-4 space-x-6">
               <button
                 type="button"
                 className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 onClick={login}
               >
                 Log in
+              </button>
+              <button
+                type="button"
+                className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                onClick={fetchChannels}
+              >
+                Fetch channels
               </button>
             </div>
 
