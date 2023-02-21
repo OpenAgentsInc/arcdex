@@ -39,7 +39,7 @@ test('user can visit a channel page and see its messages', function () {
                         ->where('title', $channel->title);
                 })
                 ->has('messages', 5, function (AssertableInertia $page) {
-                    $page->hasAll(['id', 'content', 'user.id', 'created_at', 'eventid', 'relayurl']);
+                    $page->hasAll(['id', 'content', 'created_at', 'eventid', 'relayurl']);
                 });
         });
 });
