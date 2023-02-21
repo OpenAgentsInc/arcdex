@@ -117,6 +117,16 @@ class VideoController extends Controller
                     'name' => 'Christopher David'
                 ]
             ],
+            [
+                'id' => 12,
+                'title' => 'UI Cleanup',
+                'subtitle' => "We clean up the chat UI.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc12.mp4',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
+            ],
         ];
 
         try {

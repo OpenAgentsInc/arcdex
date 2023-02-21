@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { usePage } from '@inertiajs/react'
-import { NewChannelButton } from './NewChannelButton'
+import { NewChannelForm } from './NewChannelForm'
 import { ChannelDetail } from './ChannelDetail'
 
 export const Sidebar = () => {
@@ -12,7 +12,7 @@ export const Sidebar = () => {
           <div className="h-0 flex-1 flex flex-col overflow-y-auto overflow-x-hidden nice-scrollbar">
             <nav className="flex h-full flex-1 flex-col space-y-1">
               <div className="p-3 border-b border-gray-700">
-                <NewChannelButton />
+                <NewChannelForm />
               </div>
               <div className="px-2 space-y-2 flex-col flex-1 overflow-y-auto nice-scrollbar">
                 <div className="pt-3 mb-3 flex flex-row items-center justify-between text-sm">
