@@ -107,6 +107,16 @@ class VideoController extends Controller
                     'name' => 'Christopher David'
                 ]
             ],
+            [
+                'id' => 11,
+                'title' => 'Creating Channels, Part 2',
+                'subtitle' => "We send the NIP-28 channel creation event to a Nostr relay.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc11.mp4',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
+            ],
         ];
 
         try {
