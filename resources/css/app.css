@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .nice-scrollbar {
+    @apply scrollbar scrollbar-track-gray-900 scrollbar-thumb-purple-500 scrollbar-thumb-rounded scrollbar-w-2;
+  }
+}
