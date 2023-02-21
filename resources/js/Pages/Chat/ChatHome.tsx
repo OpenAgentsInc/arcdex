@@ -4,7 +4,8 @@ import { ChatDemo } from '../../Main'
 import { checkRelayForEvent } from '../../nostrHelper'
 
 export default function ChatHome() {
-  const { channels } = usePage().props
+  //   const { channels } = usePage().props
+  return <></>
 
   //   React.useEffect(() => {
   //     console.log('CHECKING FOR CHANNEL CREATION EVENT')
@@ -13,5 +14,5 @@ export default function ChatHome() {
   //     )
   //   }, [])
 
-  return <ChatDemo channels={channels} />
+  //   return <ChatDemo channels={channels} />
 }

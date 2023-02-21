@@ -77,7 +77,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <div className="flex flex-col h-full w-full dark:bg-gray-800 overflow-hidden items-stretch flex-1 pb-28">
+    <div className="flex flex-col h-full w-full dark:bg-gray-800 overflow-hidden items-stretch flex-1">
       <div className="h-screen flex overflow-hidden bg-cool-gray-100">
         <Sidebar />
         <div className="flex flex-col w-0 flex-1 overflow-hidden">
