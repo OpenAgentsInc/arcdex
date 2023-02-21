@@ -36,8 +36,8 @@ test('user can create a channel', function () {
     // assert that the user belongs to the channel
     expect($user->channels->first()->id)->toBe(1);
 
-    // asser that a CreateNostrChannel job was pushed
-    Queue::assertPushed(CreateNostrChannel::class, function ($job) {
+    // asser that a CreateNostrChannel job was NOT pushed - maybe do this later
+    Queue::assertNotPushed(CreateNostrChannel::class, function ($job) {
         return $job->channel->id === 1;
     });
 });

@@ -25,8 +25,8 @@ class ChannelController extends Controller
         // User who created the channel is automatically added to the channel
         $channel->users()->attach(auth()->user());
 
-        // Create the channel on Nostr
-        CreateNostrChannel::dispatch($channel);
+        // Create the channel on Nostr (skipping for now - doing it client-side - may revisit later)
+        // CreateNostrChannel::dispatch($channel);
 
         // Redirect back to the chat page
         return Redirect::route('chat')->with('success', 'Channel created.');
