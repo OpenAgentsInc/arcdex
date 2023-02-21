@@ -151,7 +151,7 @@ class VideoController extends Controller
                 'id' => 15,
                 'title' => 'Indexing Channels, Part 2',
                 'subtitle' => "We connect to more relays and index 300+ channels.",
-                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc14.mp4',
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc15.mp4',
                 'user' => [
                     'id' => 1,
                     'name' => 'Christopher David'
