@@ -11,7 +11,7 @@ class ChannelMessageController extends Controller
     public function store (Request $request, Channel $channel) {
         $channel->messages()->create([
             'user_id' => auth()->user()->id,
-            'text' => $request->text,
+            'content' => $request->content,
             'eventid' => $request->eventid,
             'relayurl' => $request->relayurl,
         ]);

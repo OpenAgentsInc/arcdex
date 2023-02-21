@@ -21,7 +21,7 @@ class MessageFactory extends Factory
         return [
             'channel_id' => Channel::factory(),
             'user_id' => User::factory(),
-            'text' => $this->faker->sentence,
+            'content' => $this->faker->sentence,
         ];
     }
 

@@ -170,7 +170,7 @@ test('user can fetch channels with the right data', function () {
                     'title',
                     'lastMessage' => [
                         'id',
-                        'text',
+                        'content',
                         'user' => [
                             'id',
                             'name',
@@ -187,7 +187,7 @@ test('user can fetch channels with the right data', function () {
                     'title' => $channels[0]->title,
                     'lastMessage' => [
                         'id' => $channels[0]->messages[0]->id,
-                        'text' => $channels[0]->messages[0]->text,
+                        'content' => $channels[0]->messages[0]->content,
                         'user' => [
                             'id' => $channels[0]->messages[0]->user_id,
                             'name' => $channels[0]->messages[0]->user->name,
@@ -200,7 +200,7 @@ test('user can fetch channels with the right data', function () {
                     'title' => $channels[1]->title,
                     'lastMessage' => [
                         'id' => $channels[1]->messages[0]->id,
-                        'text' => $channels[1]->messages[0]->text,
+                        'content' => $channels[1]->messages[0]->content,
                         'user' => [
                             'id' => $channels[1]->messages[0]->user_id,
                             'name' => $channels[1]->messages[0]->user->name,
@@ -213,7 +213,7 @@ test('user can fetch channels with the right data', function () {
                     'title' => $channels[2]->title,
                     'lastMessage' => [
                         'id' => $channels[2]->messages[0]->id,
-                        'text' => $channels[2]->messages[0]->text,
+                        'content' => $channels[2]->messages[0]->content,
                         'user' => [
                             'id' => $channels[2]->messages[0]->user_id,
                             'name' => $channels[2]->messages[0]->user->name,
@@ -226,7 +226,7 @@ test('user can fetch channels with the right data', function () {
                     'title' => $channels[3]->title,
                     'lastMessage' => [
                         'id' => $channels[3]->messages[0]->id,
-                        'text' => $channels[3]->messages[0]->text,
+                        'content' => $channels[3]->messages[0]->content,
                         'user' => [
                             'id' => $channels[3]->messages[0]->user_id,
                             'name' => $channels[3]->messages[0]->user->name,
@@ -251,7 +251,7 @@ test('user can fetch messages with the right data', function () {
             'data' => [
                 '*' => [
                     'id',
-                    'text',
+                    'content',
                     'user' => [
                         'id',
                         'name',
@@ -263,7 +263,7 @@ test('user can fetch messages with the right data', function () {
             'data' => [
                 [
                     'id' => 1,
-                    'text' => $messages[0]->text,
+                    'content' => $messages[0]->content,
                     'user' => [
                         'id' => $messages[0]->user_id,
                         'name' => $messages[0]->user->name,
@@ -271,7 +271,7 @@ test('user can fetch messages with the right data', function () {
                 ],
                 [
                     'id' => 2,
-                    'text' => $messages[1]->text,
+                    'content' => $messages[1]->content,
                     'user' => [
                         'id' => $messages[1]->user_id,
                         'name' => $messages[1]->user->name,
@@ -279,7 +279,7 @@ test('user can fetch messages with the right data', function () {
                 ],
                 [
                     'id' => 3,
-                    'text' => $messages[2]->text,
+                    'content' => $messages[2]->content,
                     'user' => [
                         'id' => $messages[2]->user_id,
                         'name' => $messages[2]->user->name,
@@ -287,7 +287,7 @@ test('user can fetch messages with the right data', function () {
                 ],
                 [
                     'id' => 4,
-                    'text' => $messages[3]->text,
+                    'content' => $messages[3]->content,
                     'user' => [
                         'id' => $messages[3]->user_id,
                         'name' => $messages[3]->user->name,
@@ -295,7 +295,7 @@ test('user can fetch messages with the right data', function () {
                 ],
                 [
                     'id' => 5,
-                    'text' => $messages[4]->text,
+                    'content' => $messages[4]->content,
                     'user' => [
                         'id' => $messages[4]->user_id,
                         'name' => $messages[4]->user->name,

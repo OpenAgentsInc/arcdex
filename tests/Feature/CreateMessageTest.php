@@ -10,7 +10,7 @@ test('user can send a message', function () {
     $this->actingAs($user);
 
     $this->post('/api/channel/1/messages', [
-        'text' => 'Hello world',
+        'content' => 'Hello world',
         'eventid' => 'test-event-id',
         'relayurl' => 'https://test-relay-url.com'
     ])
@@ -21,7 +21,7 @@ test('user can send a message', function () {
     $this->assertDatabaseHas('messages', [
         'id' => 1,
         'channel_id' => $channel->id,
-        'text' => 'Hello world',
+        'content' => 'Hello world',
         'eventid' => 'test-event-id',
         'relayurl' => 'https://test-relay-url.com',
     ]);

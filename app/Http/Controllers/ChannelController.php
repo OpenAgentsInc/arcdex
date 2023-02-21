@@ -44,8 +44,8 @@ class ChannelController extends Controller
             'messages' => $channel->messages->map(function ($message) {
                 return [
                     'id' => $message->id,
-                    'user' => $message->user->only('id', 'name'),
-                    'text' => $message->text,
+                    // 'user' => $message->user->only('id', 'name'),
+                    'content' => $message->content,
                     'eventid' => $message->eventid,
                     'relayurl' => $message->relayurl,
                     'created_at' => $message->created_at->diffForHumans(),

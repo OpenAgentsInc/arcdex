@@ -19,7 +19,6 @@ export const NewChannelForm = () => {
       console.log('no connect')
       return
     }
-    console.log('so')
     let chan = {}
     chan['about'] = 'A demo channel'
     chan['name'] = data.title

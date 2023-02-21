@@ -127,6 +127,16 @@ class VideoController extends Controller
                     'name' => 'Christopher David'
                 ]
             ],
+            [
+                'id' => 13,
+                'title' => 'Sending Messages',
+                'subtitle' => "We send our first message to a Nostr channel we created.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc13.mp4',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
+            ],
         ];
 
         try {

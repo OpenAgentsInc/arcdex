@@ -12,5 +12,5 @@ it('belongs to a user', function () {
 it('has message content', function () {
     $message = Message::factory()->create();
 
-    $this->assertIsString($message->text);
+    $this->assertIsString($message->content);
 });
