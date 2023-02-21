@@ -17,9 +17,11 @@ class WebSocketClientService
     {
         $subscriptionId = bin2hex(random_bytes(16));
 
+        $limit = 30;
+
         $filters = [
             "kinds" => [40],
-            "limit" => 20
+            "limit" => $limit
         ];
 
         $requestMessage = ["REQ", $subscriptionId, $filters];
@@ -28,7 +30,7 @@ class WebSocketClientService
 
         $events = [];
 
-        while (count($events) < 20) {
+        while (count($events) < $limit) {
             $responseMessage = json_decode($this->client->receive(), true);
 
             if ($responseMessage[0] === "EVENT" && $responseMessage[1] === $subscriptionId) {

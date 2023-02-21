@@ -139,8 +139,18 @@ class VideoController extends Controller
             ],
             [
                 'id' => 14,
-                'title' => 'Indexing Channels',
+                'title' => 'Indexing Channels, Part 1',
                 'subtitle' => "We write an event indexer and save 20 Nostr channels to our database.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc14.mp4',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
+            ],
+            [
+                'id' => 15,
+                'title' => 'Indexing Channels, Part 2',
+                'subtitle' => "We connect to more relays and index 300+ channels.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc14.mp4',
                 'user' => [
                     'id' => 1,
