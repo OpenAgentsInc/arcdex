@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('channels', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('eventId')->nullable();
+            $table->string('relayUrl')->nullable();
             $table->timestamps();
         });
     }

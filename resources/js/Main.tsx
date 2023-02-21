@@ -2,6 +2,12 @@ import * as React from 'react'
 import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
+  broadcastToRelay,
+  Connect,
+  connectToRelay,
+  ConnectURI,
+} from '@nostr-connect/connect'
+import {
   Bars3BottomLeftIcon,
   BellIcon,
   XMarkIcon,
@@ -12,6 +18,9 @@ import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 // import inertia
 import { useForm } from '@inertiajs/react'
 import { Event, getEventHash } from 'nostr-tools'
+import { useStore } from './store'
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
 const messages = [
   {
@@ -176,14 +185,21 @@ export function ChatDemo({ channels }) {
 
   const { data, setData, post, processing, errors } = useForm({
     title: '',
+    eventid: '',
+    relayurl: '',
   })
+
+  const connect = useStore((state) => state.connect)
 
   const createChannel = async (e) => {
     e.preventDefault()
-    // post('/api/channels')
+    if (!connect) {
+      console.log('no connect')
+      return
+    }
     let chan = {}
-    chan['about'] = ''
-    chan['name'] = name
+    chan['about'] = 'A demo channel'
+    chan['name'] = data.title
     chan['picture'] = 'https://placekitten.com/200/200'
     const now = Math.floor(Date.now() / 1000)
     const note = JSON.stringify(chan)
@@ -197,8 +213,14 @@ export function ChatDemo({ channels }) {
     }
     event.id = getEventHash(event)
     event.sig = await connect.signEvent(event)
-    console.log('event', event)
-    // var signedEvent = await getSignedEvent(event, privKey)
+    const relayurl = 'wss://nostr.vulpem.com'
+    const relay = await connectToRelay(relayurl)
+    await broadcastToRelay(relay, event, true)
+
+    data.eventid = event.id
+    data.relayurl = relayurl
+
+    post('/api/channels')
   }
 
   return (

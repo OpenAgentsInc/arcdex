@@ -11,10 +11,19 @@ class ChannelController extends Controller
 {
     public function store()
     {
+        try {
+            $validation = Request::validate([
+                'title' => ['required', 'max:50'],
+                'eventid' => ['required'],
+                'relayurl' => ['required'],
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // return Redirect::back()->with('error', 'Channel creation failed.');
+        }
+
         // Create a channel in our database
-        $channel = Channel::create(Request::validate([
-            'title' => ['required', 'max:50'],
-        ]));
+        $channel = Channel::create($validation);
+        // dd($channel);
 
         // User who created the channel is automatically added to the channel
         $channel->users()->attach(auth()->user());
