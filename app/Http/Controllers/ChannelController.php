@@ -41,6 +41,16 @@ class ChannelController extends Controller
                     'title' => $channel->title,
                 ];
             }),
+            'messages' => $channel->messages->map(function ($message) {
+                return [
+                    'id' => $message->id,
+                    'user' => $message->user->only('id', 'name'),
+                    'text' => $message->text,
+                    'eventid' => $message->eventid,
+                    'relayurl' => $message->relayurl,
+                    'created_at' => $message->created_at->diffForHumans(),
+                ];
+            }),
         ]);
     }
 }
