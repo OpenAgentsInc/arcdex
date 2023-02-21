@@ -137,6 +137,16 @@ class VideoController extends Controller
                     'name' => 'Christopher David'
                 ]
             ],
+            [
+                'id' => 14,
+                'title' => 'Indexing Channels',
+                'subtitle' => "We write an event indexer and save 20 Nostr channels to our database.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc14.mp4',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
+            ],
         ];
 
         try {
