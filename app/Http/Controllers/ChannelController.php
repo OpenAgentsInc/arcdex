@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\CreateNostrChannel;
 use App\Models\Channel;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;

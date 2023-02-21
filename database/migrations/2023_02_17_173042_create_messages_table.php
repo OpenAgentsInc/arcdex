@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('channel_id')->constrained()->cascadeOnDelete();
             $table->longText('text');
+            $table->string('eventid')->nullable();
+            $table->string('relayurl')->nullable();
             $table->timestamps();
         });
     }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChannelController;
+use App\Http\Controllers\ChannelMessageController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\VideoController;
 use App\Models\Channel;
@@ -19,6 +20,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/chat', [ChatController::class, 'index'])->name('chat');
     Route::get('/channel/{channel}', [ChannelController::class, 'show'])->name('channel');
 });
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::post('/api/channel/{channel}/messages', [ChannelMessageController::class, 'store']);
+});
+
 
 
 
