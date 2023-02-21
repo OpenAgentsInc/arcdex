@@ -14,8 +14,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/chat', [ChatController::class, 'index'])->name('chat');
+    Route::get('/channel/{channel}', [ChannelController::class, 'show'])->name('channel');
 });
 
 

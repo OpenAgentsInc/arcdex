@@ -6,6 +6,7 @@ use App\Jobs\CreateNostrChannel;
 use App\Models\Channel;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
+use Inertia\Inertia;
 
 class ChannelController extends Controller
 {
@@ -29,5 +30,18 @@ class ChannelController extends Controller
 
         // Redirect back to the chat page
         return Redirect::route('chat')->with('success', 'Channel created.');
+    }
+
+    public function show($id) {
+        $channel = Channel::find($id);
+        return Inertia::render('Chat/Channel', [
+            'channel' => $channel->only('id', 'title'),
+            'channels' => auth()->user()->channels->map(function ($channel) {
+                return [
+                    'id' => $channel->id,
+                    'title' => $channel->title,
+                ];
+            }),
+        ]);
     }
 }
