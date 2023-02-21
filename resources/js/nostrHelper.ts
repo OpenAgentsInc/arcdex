@@ -20,7 +20,7 @@ export const checkRelayForEvent = async (
     },
   ])
   sub.on('event', (event) => {
-    console.log('we got the event we wanted:', event)
+    console.log('Found:', event)
   })
   sub.on('eose', () => {
     sub.unsub()
