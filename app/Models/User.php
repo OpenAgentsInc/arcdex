@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Channel::class);
     }
+
+    public function getUnjoinedChannelsAttribute()
+    {
+        return Channel::whereNotIn('id', $this->channels->pluck('id'))->get();
+    }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\ChannelMessageController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\DiscoverController;
 use App\Http\Controllers\VideoController;
 use App\Models\Channel;
 use App\Models\User;
@@ -15,6 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/discover', [DiscoverController::class, 'index'])->name('discover');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/chat', [ChatController::class, 'index'])->name('chat');
