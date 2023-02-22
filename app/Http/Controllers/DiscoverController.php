@@ -18,6 +18,7 @@ class DiscoverController extends Controller
             : collect();
 
         return Inertia::render('Discover/Index', [
+            'authed' => auth()->check(),
             'channels' => $channels->map(function ($channel) {
                 return [
                     'id' => $channel->id,

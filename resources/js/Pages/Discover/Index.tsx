@@ -3,7 +3,9 @@ import axios from 'axios'
 import * as React from 'react'
 
 export default function DiscoverPage() {
-  const { discoverChannels } = usePage().props as any
+  const { authed, discoverChannels } = usePage().props as any
+
+  // check with inertia if we have authed user
 
   const filteredChannels = discoverChannels.filter(
     (channel) => channel.title !== ''
@@ -40,21 +42,22 @@ export default function DiscoverPage() {
                 alt=""
               />
             </div>
-            <div>
-              <div className="-mt-px flex divide-x divide-indigo-500">
-                <div className="flex w-0 flex-1">
-                  <a
-                    // href={`mailtio:${person.email}`}
-                    onClick={() => {
-                      router.post(`/api/channels/${person.id}/join`)
-                    }}
-                    className="cursor-pointer relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4 text-sm font-medium text-indigo-300 hover:text-gray-500"
-                  >
-                    <span className="ml-3">Join</span>
-                  </a>
+            {authed && (
+              <div>
+                <div className="-mt-px flex divide-x divide-indigo-500">
+                  <div className="flex w-0 flex-1">
+                    <a
+                      onClick={() => {
+                        router.post(`/api/channels/${person.id}/join`)
+                      }}
+                      className="cursor-pointer relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4 text-sm font-medium text-indigo-300 hover:text-gray-500"
+                    >
+                      <span className="ml-3">Join</span>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </li>
         ))}
       </ul>
