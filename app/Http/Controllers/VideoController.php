@@ -157,6 +157,16 @@ class VideoController extends Controller
                     'name' => 'Christopher David'
                 ]
             ],
+            [
+                'id' => 16,
+                'title' => 'Discovering Channels',
+                'subtitle' => "We build a Discover page listing all indexed channels and allowing users to join any channel.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc16.mp4',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
+            ],
         ];
 
         try {
