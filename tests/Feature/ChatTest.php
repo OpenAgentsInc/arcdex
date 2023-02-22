@@ -12,14 +12,22 @@ test('user can join a channel', function () {
 
     $response = $this->post('/api/channels/' . $channel->id . '/join');
 
-    $response->assertStatus(200)
-        ->assertJson([
-            'data' => [
-                'id' => $channel->id,
-                'title' => $channel->title,
-                'joined' => true,
-            ],
-        ]);
+    $response->assertRedirect();
+
+    // assert we see the channel in the user's channels
+    $this->assertDatabaseHas('channel_user', [
+        'user_id' => $user->id,
+        'channel_id' => $channel->id,
+    ]);
+
+    // $response->assertStatus(200)
+    //     // ->assertJson([
+    //     //     'data' => [
+    //     //         'id' => $channel->id,
+    //     //         'title' => $channel->title,
+    //     //         'joined' => true,
+    //     //     ],
+    //     // ]);
 });
 
 test('user can leave a channel', function () {
@@ -30,14 +38,22 @@ test('user can leave a channel', function () {
 
     $response = $this->post('/api/channels/' . $channel->id . '/join');
 
-    $response->assertStatus(200)
-        ->assertJson([
-            'data' => [
-                'id' => $channel->id,
-                'title' => $channel->title,
-                'joined' => true,
-            ],
-        ]);
+    $response->assertRedirect();
+
+    // assert we see the channel in the user's channels
+    $this->assertDatabaseHas('channel_user', [
+        'user_id' => $user->id,
+        'channel_id' => $channel->id,
+    ]);
+
+    // $response->assertStatus(200)
+    //     ->assertJson([
+    //         'data' => [
+    //             'id' => $channel->id,
+    //             'title' => $channel->title,
+    //             'joined' => true,
+    //         ],
+    //     ]);
 
     $response = $this->delete('/api/channels/' . $channel->id . '/join');
 
@@ -49,6 +65,12 @@ test('user can leave a channel', function () {
                 'joined' => false,
             ],
         ]);
+
+    // assert we do not see the channel in the user's channels
+    $this->assertDatabaseMissing('channel_user', [
+        'user_id' => $user->id,
+        'channel_id' => $channel->id,
+    ]);
 });
 
 test('user can optionally fetch only channels they havent joined', function () {

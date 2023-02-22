@@ -9,6 +9,7 @@ use App\Models\Channel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Route;
 
@@ -112,11 +113,12 @@ Route::middleware('auth:sanctum')->get('/api/channels', function (Request $reque
 Route::middleware('auth:sanctum')->post('/api/channels/{channel}/join', function (Request $request, Channel $channel) {
     $channel->users()->syncWithoutDetaching($request->user()->id);
 
-    return [
-        'data' => [
-            'id' => $channel->id,
-            'title' => $channel->title,
-            'joined' => true,
-        ]
-    ];
+   return Redirect::back();
+    // return [
+    //     'data' => [
+    //         'id' => $channel->id,
+    //         'title' => $channel->title,
+    //         'joined' => true,
+    //     ]
+    // ];
 });

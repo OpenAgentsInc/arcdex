@@ -9,13 +9,24 @@ class DiscoverController extends Controller
 {
     public function index()
     {
-        $channels = auth()->check()
+        $discoverChannels = auth()->check()
             ? auth()->user()->unjoinedChannels
             : Channel::all();
 
+        $channels = auth()->check()
+            ? auth()->user()->channels
+            : collect();
+
         return Inertia::render('Discover/Index', [
-            'channels' => [],
-            'discoverChannels' => $channels->map(function ($channel) {
+            'channels' => $channels->map(function ($channel) {
+                return [
+                    'id' => $channel->id,
+                    'title' => $channel->title,
+                    'relayurl' => $channel->relayurl,
+                    'eventid' => $channel->eventid,
+                ];
+            }),
+            'discoverChannels' => $discoverChannels->map(function ($channel) {
                 return [
                     'id' => $channel->id,
                     'title' => $channel->title,

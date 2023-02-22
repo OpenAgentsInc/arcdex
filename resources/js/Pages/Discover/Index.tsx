@@ -1,4 +1,4 @@
-import { usePage } from '@inertiajs/react'
+import { router, usePage } from '@inertiajs/react'
 import axios from 'axios'
 import * as React from 'react'
 
@@ -46,9 +46,9 @@ export default function DiscoverPage() {
                   <a
                     // href={`mailtio:${person.email}`}
                     onClick={() => {
-                      axios.post(`/api/channels/${person.id}/join`)
+                      router.post(`/api/channels/${person.id}/join`)
                     }}
-                    className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4 text-sm font-medium text-indigo-300 hover:text-gray-500"
+                    className="cursor-pointer relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4 text-sm font-medium text-indigo-300 hover:text-gray-500"
                   >
                     <span className="ml-3">Join</span>
                   </a>
