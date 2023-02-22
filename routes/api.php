@@ -22,17 +22,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
-Route::middleware('auth:sanctum')->post('/channels/{channel}/join', function (Request $request, Channel $channel) {
-    $channel->users()->syncWithoutDetaching($request->user()->id);
+// Route::middleware('auth:sanctum')->post('/channels/{channel}/join', function (Request $request, Channel $channel) {
+//     $channel->users()->syncWithoutDetaching($request->user()->id);
 
-    return [
-        'data' => [
-            'id' => $channel->id,
-            'title' => $channel->title,
-            'joined' => true,
-        ]
-    ];
-});
+//     return [
+//         'data' => [
+//             'id' => $channel->id,
+//             'title' => $channel->title,
+//             'joined' => true,
+//         ]
+//     ];
+// });
 
 Route::middleware('auth:sanctum')->delete('/channels/{channel}/join', function (Request $request, Channel $channel) {
     $channel->users()->detach($request->user()->id);

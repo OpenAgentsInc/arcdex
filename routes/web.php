@@ -107,3 +107,16 @@ Route::middleware('auth:sanctum')->get('/api/channels', function (Request $reque
         'data' => $channels
     ];
 });
+
+
+Route::middleware('auth:sanctum')->post('/api/channels/{channel}/join', function (Request $request, Channel $channel) {
+    $channel->users()->syncWithoutDetaching($request->user()->id);
+
+    return [
+        'data' => [
+            'id' => $channel->id,
+            'title' => $channel->title,
+            'joined' => true,
+        ]
+    ];
+});

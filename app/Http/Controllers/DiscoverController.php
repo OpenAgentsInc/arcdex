@@ -14,7 +14,8 @@ class DiscoverController extends Controller
             : Channel::all();
 
         return Inertia::render('Discover/Index', [
-            'channels' => $channels->map(function ($channel) {
+            'channels' => [],
+            'discoverChannels' => $channels->map(function ($channel) {
                 return [
                     'id' => $channel->id,
                     'title' => $channel->title,
