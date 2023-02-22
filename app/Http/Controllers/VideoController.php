@@ -167,6 +167,16 @@ class VideoController extends Controller
                     'name' => 'Christopher David'
                 ]
             ],
+            [
+                'id' => 17,
+                'title' => 'Retrieving Messages',
+                'subtitle' => "We retrieve channel messages from relays so we can see the messages we sent.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc17.mp4',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
+            ],
         ];
 
         try {
