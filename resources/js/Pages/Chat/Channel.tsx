@@ -2,6 +2,7 @@ import { usePage } from '@inertiajs/react'
 import * as React from 'react'
 import { InputBar } from '../../Components/InputBar'
 import { Message } from '../../Components/Message'
+import { relayInit } from 'nostr-tools'
 
 interface MessageType {
   id: string
@@ -12,18 +13,58 @@ interface MessageType {
 }
 
 const Channel = () => {
-  const { messages: rawMessages } = usePage().props as any
-  const messages = rawMessages as MessageType[]
+  const { channel, messages: rawMessages } = usePage().props as any
+  const [channelMessages, setChannelMessages] = React.useState<any>([])
+
+  const dedupedMessages = React.useMemo(() => {
+    const deduped = channelMessages.reduce((acc, message) => {
+      if (!acc[message.id]) {
+        acc[message.id] = message
+      }
+      return acc
+    }, {})
+    return Object.values(deduped)
+  }, [channelMessages])
+
+  const subscribeToChannelMessages = async () => {
+    console.log(`Subscribing to channel messages via relay ${channel.relayurl}`)
+    // console.log(`Channel ID is: ${channel.eventid}`)
+    const relay = relayInit(channel.relayurl)
+    relay.on('connect', () => {
+      console.log(`connected to ${relay.url}`)
+    })
+
+    await relay.connect()
+    let sub = relay.sub([
+      {
+        kinds: [42],
+        '#e': [channel.eventid],
+      },
+    ])
+    sub.on('event', (event) => {
+      console.log('Found:', event)
+      setChannelMessages((prev) => [...prev, event])
+    })
+    sub.on('eose', () => {
+      console.log('End of stored events')
+      //   sub.unsub()
+    })
+  }
+
+  React.useEffect(() => {
+    subscribeToChannelMessages()
+  }, [])
+
+  //   const messages = rawMessages as MessageType[]
   return (
     <div className="flex flex-col h-full w-full dark:bg-gray-800 overflow-hidden items-stretch flex-1">
       <div
         id="chatbox-container"
         className="h-full w-full grow nice-scrollbar overflow-y-scroll"
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
-          {/* Replace with your content */}
-          <div className="py-4">
-            {messages.map((message) => (
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-8">
+          <div className="py-4 flex flex-col items-center">
+            {dedupedMessages.map((message) => (
               <Message message={message} key={message.id} />
             ))}
           </div>

@@ -17,7 +17,9 @@ test('user can visit a new channel page and see 0 messages', function () {
             $page->component('Chat/Channel')
                 ->has('channel', function (AssertableInertia $page) use ($channel) {
                     $page->where('id', $channel->id)
-                        ->where('title', $channel->title);
+                        ->where('title', $channel->title)
+                        ->where('relayurl', $channel->relayurl)
+                        ->where('eventid', $channel->eventid);
                 })
                 ->has('messages', 0);
         });
@@ -36,7 +38,9 @@ test('user can visit a channel page and see its messages', function () {
             $page->component('Chat/Channel')
                 ->has('channel', function (AssertableInertia $page) use ($channel) {
                     $page->where('id', $channel->id)
-                        ->where('title', $channel->title);
+                        ->where('title', $channel->title)
+                        ->where('relayurl', $channel->relayurl)
+                        ->where('eventid', $channel->eventid);
                 })
                 ->has('messages', 5, function (AssertableInertia $page) {
                     $page->hasAll(['id', 'content', 'created_at', 'eventid', 'relayurl']);

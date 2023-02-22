@@ -34,7 +34,7 @@ class ChannelController extends Controller
     public function show($id) {
         $channel = Channel::find($id);
         return Inertia::render('Chat/Channel', [
-            'channel' => $channel->only('id', 'title'),
+            'channel' => $channel->only('id', 'title', 'relayurl', 'eventid'),
             'channels' => auth()->user()->channels->map(function ($channel) {
                 return [
                     'id' => $channel->id,

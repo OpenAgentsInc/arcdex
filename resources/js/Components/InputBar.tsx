@@ -17,11 +17,15 @@ export const InputBar = () => {
 
   const sendMessage = async (e) => {
     e.preventDefault()
-    console.log('Hello!')
+    console.log('Sending message...')
     if (!connect) {
       console.log('no connect')
       return
     }
+
+    const pk = await connect.getPublicKey()
+    console.log('pk', pk)
+
     // let chan = {}
     // chan['about'] = 'A demo channel'
     // chan['name'] = data.title
@@ -32,14 +36,14 @@ export const InputBar = () => {
       content: data.content,
       created_at: now,
       kind: 42,
-      tags: [],
-      pubkey:
-        '696da2ff3bab02510a3e4a5b70d370140774e174f3a0ebf5d2dc8a376d1232ec',
+      tags: [['e', channel.eventid, channel.relayurl, 'root']],
+      pubkey: pk,
     }
     event.id = getEventHash(event)
     event.sig = await connect.signEvent(event)
-    const relayurl = 'wss://nostr.vulpem.com'
+    const relayurl = channel.relayurl
     const relay = await connectToRelay(relayurl)
+    console.log('broadcasting to relay:', relayurl)
     await broadcastToRelay(relay, event, true)
 
     data.eventid = event.id
