@@ -27,6 +27,8 @@
     "@inertiajs/react": "^1.0.2",
     "@nostr-connect/connect": "^0.3.2",
     "@radix-ui/colors": "0.1.8",
+    "@radix-ui/react-dialog": "1.0.2",
+    "@radix-ui/react-icons": "1.2.0",
     "@radix-ui/react-popover": "1.0.3",
     "buffer": "^6.0.3",
     "date-fns": "^2.29.3",
