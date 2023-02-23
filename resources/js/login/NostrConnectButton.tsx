@@ -1,8 +1,10 @@
 import * as React from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Cross2Icon } from '@radix-ui/react-icons'
+import { useNostrConnectUri } from '../hooks/useNostrConnectUri'
 
 export const NostrConnectButton = () => {
+  const nostrConnectUri = useNostrConnectUri()
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -20,33 +22,19 @@ export const NostrConnectButton = () => {
             Log in with Nostr Connect
           </Dialog.Title>
           <Dialog.Description className="text-mauve11 mt-[10px] mb-5 text-[15px] leading-normal">
-            In your Nostr signer app, scan the QR code or paste the connection
-            string.
+            Paste the connection string into your Nostr Connect signer app.
           </Dialog.Description>
-          <fieldset className="mb-[15px] flex items-center gap-5">
-            <label
-              className="text-violet11 w-[90px] text-right text-[15px]"
-              htmlFor="name"
-            >
-              Name
-            </label>
-            <input
-              className="text-violet11 shadow-violet7 focus:shadow-violet8 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
-              id="name"
-              defaultValue="Pedro Duarte"
-            />
-          </fieldset>
           <fieldset className="mb-[15px] flex items-center gap-5">
             <label
               className="text-violet11 w-[90px] text-right text-[15px]"
               htmlFor="username"
             >
-              Username
+              Connection String
             </label>
             <input
               className="text-violet11 shadow-violet7 focus:shadow-violet8 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
               id="username"
-              defaultValue="@peduarte"
+              defaultValue={nostrConnectUri}
             />
           </fieldset>
           <Dialog.Close asChild>
