@@ -1,8 +1,34 @@
 import * as React from 'react'
+import * as Popover from '@radix-ui/react-popover'
+
+const PopoverDemo = () => (
+  <Popover.Root>
+    <Popover.Trigger className="text-indigo-300/75 italic text-sm py-1">
+      What is Nostr Connect?
+    </Popover.Trigger>
+    <Popover.Portal>
+      <Popover.Content className="PopoverContent" sideOffset={5}>
+        <p className="mb-4">
+          Nostr Connect allow apps to connect with remote signing devices, so
+          you don't need to reveal your private key.
+        </p>
+
+        <a
+          href="https://github.com/nostr-protocol/nips/pull/153"
+          target="_blank"
+        >
+          <p className="text-indigo-700 underline">Read more on GitHub.</p>
+        </a>
+
+        <Popover.Arrow className="PopoverArrow" />
+      </Popover.Content>
+    </Popover.Portal>
+  </Popover.Root>
+)
 
 export const LoginScreen = () => {
   return (
-    <div className="text-white h-full w-full bg-gray-900 flex flex-col justify-center items-center space-y-10">
+    <div className="font-sans text-white h-full w-full bg-gray-900 flex flex-col justify-center items-center space-y-10">
       <img
         className="mb-8"
         src="/img/logo.png"
@@ -16,11 +42,13 @@ export const LoginScreen = () => {
         Log in with Nostr Connect
       </button>
 
-      <a href="https://github.com/nostr-protocol/nips/pull/153" target="_blank">
+      {/* <a href="https://github.com/nostr-protocol/nips/pull/153" target="_blank">
         <p className="text-indigo-300/75 italic text-sm">
           What is Nostr Connect?
         </p>
-      </a>
+      </a> */}
+
+      <PopoverDemo />
 
       {/* <p>Status: Disconnected</p> */}
 
