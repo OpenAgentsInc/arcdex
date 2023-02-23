@@ -177,6 +177,16 @@ class VideoController extends Controller
                     'name' => 'Christopher David'
                 ]
             ],
+            [
+                'id' => 18,
+                'title' => 'Delegated Event Signing (NIP-26)',
+                'subtitle' => "We integrate NIP-26 via Nostr Connect. Enjoy this unedited 4+ hours of agony and noob mistakes, followed by a glorious world-first.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc18.mov',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
+            ],
         ];
 
         try {

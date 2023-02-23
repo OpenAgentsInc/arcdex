@@ -21,7 +21,7 @@ const generateConditions = () => {
 export function useDelegation() {
   const connect = useStore((state) => state.connect)
 
-  const sendDelegatedEvent = async (channel: any, content: string) => {
+  const signDelegatedEvent = async (channel: any, content: string) => {
     if (!connect) return
 
     const pk = await connect.getPublicKey()
@@ -50,10 +50,13 @@ export function useDelegation() {
     console.log(delegator)
 
     const valid = await isDelegatedEventValid(signedEvent as any)
-    console.log('VALID?', valid)
+    if (!valid) throw new Error('Delegated event is invalid.')
+
+    console.log('Delegated event is valid.')
+    return signedEvent
   }
 
   return {
-    sendDelegatedEvent,
+    signDelegatedEvent,
   }
 }
