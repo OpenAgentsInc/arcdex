@@ -1,9 +1,7 @@
 import {
   Event,
-  generatePrivateKey,
   getEventHash,
   getPublicKey,
-  nip26,
   signEvent,
   UnsignedEvent,
 } from 'nostr-tools'
@@ -20,16 +18,6 @@ const generateConditions = () => {
   return { kind: 42, until: now + 100000, since: now }
 }
 
-const generateDemoDelegation = async (sk) => {
-  const delegateParameters: nip26.Parameters = {
-    pubkey: webPK,
-    ...generateConditions(),
-  }
-  const delegation = nip26.createDelegation(sk, delegateParameters)
-  console.log('We have the delegation:', delegation)
-  return delegation
-}
-
 export function useDelegation() {
   const connect = useStore((state) => state.connect)
 
@@ -41,10 +29,6 @@ export function useDelegation() {
       webPK,
       generateConditions()
     )) as unknown as Delegation
-
-    // let sk = generatePrivateKey()
-    // const pk = getPublicKey(sk)
-    // const delegation: Delegation = await generateDemoDelegation(sk)
 
     let event: UnsignedEvent = {
       content: content,
@@ -65,10 +49,8 @@ export function useDelegation() {
     const delegator = getDelegator(signedEvent)
     console.log(delegator)
 
-    const valid = await isDelegatedEventValid(signedEvent)
+    const valid = await isDelegatedEventValid(signedEvent as any)
     console.log('VALID?', valid)
-
-    // 38abf38c4d4c29e671a63731799b81142f82784438ae024af5b0f70f1a23594c77bc6062c8c86921d3ccea226a72a2654596fbb865fd94399537653ba239f183
   }
 
   return {
