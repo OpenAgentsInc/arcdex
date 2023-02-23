@@ -1,17 +1,12 @@
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { useStatePersist } from 'use-state-persist'
-import {
-  broadcastToRelay,
-  Connect,
-  connectToRelay,
-  ConnectURI,
-} from '@nostr-connect/connect'
+import { Connect, ConnectURI } from '@nostr-connect/connect'
 import { useStore } from './store'
 import { getPublicKey } from 'nostr-tools'
 import { Sidebar } from './Components/Sidebar'
 
-const secretKey =
+export const secretKey =
   '5acff99d1ad3e1706360d213fd69203312d9b5e91a2d5f2e06100cc6f686e5b3'
 const connectURI = new ConnectURI({
   target: getPublicKey(secretKey),
@@ -61,7 +56,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
       })
       await connect.init()
       setConnect(connect)
-      //   console.log('Initialized')
+      //   console.log('Connect object initialized to', connect)
     })()
   }, [pubkey])
 

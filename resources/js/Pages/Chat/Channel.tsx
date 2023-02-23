@@ -3,6 +3,7 @@ import * as React from 'react'
 import { InputBar } from '../../Components/InputBar'
 import { Message } from '../../Components/Message'
 import { relayInit } from 'nostr-tools'
+import { checkRelayForEvent } from '../../nostr'
 
 interface MessageType {
   id: string
@@ -16,6 +17,15 @@ const Channel = () => {
   const { channel, messages: rawMessages } = usePage().props as any
   const [channelMessages, setChannelMessages] = React.useState<any>([])
 
+  //   React.useEffect(() => {
+  //     const eventId =
+  //       'ae5a7ee7eddf8710e7c19c6ee3fc66fb4c60f36c01fc82f6801e36eba984dfa9'
+  //     // const eventId =
+  //     //   '97e0e9ea009819a30fcaa856dd065525d914362e7da71d652392e0e640de0ac5'
+  //     const relayUrl = 'wss://relay.current.fyi'
+  //     checkRelayForEvent(eventId, relayUrl)
+  //   }, [])
+
   const dedupedMessages = React.useMemo(() => {
     const deduped = channelMessages.reduce((acc, message) => {
       if (!acc[message.id]) {
@@ -27,11 +37,11 @@ const Channel = () => {
   }, [channelMessages])
 
   const subscribeToChannelMessages = async () => {
-    console.log(`Subscribing to channel messages via relay ${channel.relayurl}`)
+    // console.log(`Subscribing to channel messages via relay ${channel.relayurl}`)
     // console.log(`Channel ID is: ${channel.eventid}`)
     const relay = relayInit(channel.relayurl)
     relay.on('connect', () => {
-      console.log(`connected to ${relay.url}`)
+      //   console.log(`connected to ${relay.url}`)
     })
 
     await relay.connect()
@@ -42,11 +52,11 @@ const Channel = () => {
       },
     ])
     sub.on('event', (event) => {
-      console.log('Found:', event)
+      //   console.log('Found:', event)
       setChannelMessages((prev) => [...prev, event])
     })
     sub.on('eose', () => {
-      console.log('End of stored events')
+      //   console.log('End of stored events')
       //   sub.unsub()
     })
   }

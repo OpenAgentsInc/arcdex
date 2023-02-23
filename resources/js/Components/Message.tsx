@@ -10,7 +10,7 @@ export const formatTimestamp = (timestamp: string) => {
 }
 
 export const Message = ({ message }) => {
-  console.log('In Message with:', message)
+  //   console.log('In Message with:', message)
   return (
     <div
       className="flex flex-col bg-gray-900 my-4 py-2 px-3 rounded-lg"
