@@ -8,10 +8,9 @@ import {
 import { Delegation, getDelegator } from 'nostr-tools/nip26'
 import { isDelegatedEventValid } from '../nostr'
 import { EventKinds } from '../nostr/constants/base'
+import { secretKey } from '../nostr/nostrConnect'
 import { useStore } from '../store'
 
-const secretKey =
-  '5acff99d1ad3e1706360d213fd69203312d9b5e91a2d5f2e06100cc6f686e5b3'
 const webPK = getPublicKey(secretKey)
 const generateConditions = () => {
   const now = Math.floor(Date.now() / 1000)

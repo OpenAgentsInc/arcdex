@@ -187,6 +187,16 @@ class VideoController extends Controller
                     'name' => 'Christopher David'
                 ]
             ],
+            [
+                'id' => 19,
+                'title' => 'Adding Radix UI',
+                'subtitle' => "We rebuild our login page using Radix UI components, refactoring as we go.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc19.mp4',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
+            ],
         ];
 
         try {

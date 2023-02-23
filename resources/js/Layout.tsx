@@ -5,9 +5,9 @@ import { Connect, ConnectURI } from '@nostr-connect/connect'
 import { useStore } from './store'
 import { getPublicKey } from 'nostr-tools'
 import { Sidebar } from './Components/Sidebar'
+import { secretKey } from './nostr/nostrConnect'
+import { useNostrConnect } from './hooks/useNostrConnect'
 
-export const secretKey =
-  '5acff99d1ad3e1706360d213fd69203312d9b5e91a2d5f2e06100cc6f686e5b3'
 const connectURI = new ConnectURI({
   target: getPublicKey(secretKey),
   relay: 'wss://nostr.vulpem.com',
@@ -20,6 +20,8 @@ const connectURI = new ConnectURI({
 })
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
+  //   useNostrConnect()
+
   const [persistedPubkey] = useStatePersist('@pubkey', '')
   const pubkey = useStore((state) => state.pubkey)
   const setPubkey = useStore((state) => state.setPubkey)

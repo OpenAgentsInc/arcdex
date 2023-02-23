@@ -27,6 +27,11 @@ export const Sidebar = () => {
               </div>
             </nav>
           </div>
+          <a href="/logout">
+            <button className="h-12 flex items-center justify-center w-full text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+              Log out
+            </button>
+          </a>
         </div>
       </div>
     </div>
