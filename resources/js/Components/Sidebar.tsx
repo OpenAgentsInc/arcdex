@@ -9,8 +9,9 @@ export const Sidebar = () => {
   const { channels } = usePage().props
   const logout = useStore((state) => state.logout)
   const [, setPubkey] = useStatePersist('@pubkey', '')
+  const [, setDelegation] = useStatePersist('@delegation', '')
   const clickedLogout = () => {
-    logout(setPubkey)
+    logout(setPubkey, setDelegation)
   }
   return (
     <div className="flex bg-gray-900">

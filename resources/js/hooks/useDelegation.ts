@@ -7,6 +7,7 @@ import {
 } from 'nostr-tools'
 import { Delegation, getDelegator } from 'nostr-tools/nip26'
 import { useState } from 'react'
+import { useStatePersist } from 'use-state-persist'
 import { isDelegatedEventValid } from '../nostr'
 import { EventKinds } from '../nostr/constants/base'
 import { secretKey } from '../nostr/nostrConnect'
@@ -20,7 +21,8 @@ const generateConditions = () => {
 
 export function useDelegation() {
   const connect = useStore((state) => state.connect)
-  const [savedDelegation, setDelegation] = useState<Delegation | null>(null)
+  //   const [savedDelegation, setDelegation] = useState<Delegation | null>(null)
+  const [savedDelegation, setDelegation] = useStatePersist('@delegation', '')
 
   const signDelegatedEvent = async (channel: any, content: string) => {
     if (!connect) return
@@ -30,13 +32,14 @@ export function useDelegation() {
     let delegation: Delegation | null = null
 
     // Check if there is a saved delegation.
-    if (savedDelegation) {
+    if (savedDelegation.length > 0) {
+      const parsedDelegation = JSON.parse(savedDelegation)
       // Check if the delegation is still valid.
       console.log('WE HAVE A SAVEDDELEGATION. CHECK IT:', savedDelegation)
 
       const currentTime = Math.floor(Date.now() / 1000) // Get current time in seconds
 
-      const conditions = savedDelegation.cond
+      const conditions = parsedDelegation.cond
       const matches = conditions.match(/created_at<(\d+)&created_at>(\d+)/)
       if (!matches) return
       console.log(matches)
@@ -46,7 +49,7 @@ export function useDelegation() {
 
       if (currentTime > minCreatedNum && currentTime < maxCreatedNum) {
         console.log('Current time meets created_at conditions')
-        delegation = savedDelegation
+        delegation = parsedDelegation
       } else {
         console.log('Current time does not meet created_at conditions')
         delegation = null
@@ -59,7 +62,7 @@ export function useDelegation() {
         generateConditions()
       )) as unknown as Delegation
 
-      setDelegation(delegation)
+      setDelegation(JSON.stringify(delegation))
     }
 
     let event: UnsignedEvent = {
