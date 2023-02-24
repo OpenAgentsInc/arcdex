@@ -207,7 +207,16 @@ class VideoController extends Controller
                     'name' => 'Christopher David'
                 ]
             ],
-
+            [
+                'id' => 21,
+                'title' => 'Remote Signing via Arc Mobile',
+                'subtitle' => "We move NIP-26 signing code from the demo app Nostrum into the Arc mobile app, enabling our mobile Arc user to sign messages on the web app.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc21.mp4',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
+            ],
         ];
 
         try {
