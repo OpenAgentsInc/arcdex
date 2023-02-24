@@ -72,12 +72,12 @@ export const DarkHero = () => {
             alt="Your Company"
           /> */}
           <div className="mt-24 sm:mt-32 lg:mt-12">
-            <a href="/video/21" className="inline-flex space-x-6">
+            <a href="/video/22" className="inline-flex space-x-6">
               <span className="rounded-full bg-indigo-500/10 px-3 py-1 text-sm font-semibold leading-6 text-indigo-400 ring-1 ring-inset ring-indigo-500/20">
                 What's new
               </span>
               <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-300">
-                <span>Building Arc #21: Remote Signing via Arc Mobile</span>
+                <span>Building Arc #22: New Landing Page</span>
                 <ChevronRightIcon
                   className="h-5 w-5 text-gray-500"
                   aria-hidden="true"
