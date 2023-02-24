@@ -217,6 +217,16 @@ class VideoController extends Controller
                     'name' => 'Christopher David'
                 ]
             ],
+            [
+                'id' => 22,
+                'title' => 'New Landing Page',
+                'subtitle' => "We build a proper landing page for the Arc website.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc22.mp4',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
+            ],
         ];
 
         try {

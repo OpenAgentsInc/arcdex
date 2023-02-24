@@ -14,7 +14,7 @@ export function useNostrConnect() {
     }
   }
   useEffect(() => {
-    console.log('pubkey is:', pubkey)
+    // console.log('pubkey is:', pubkey)
     if (pubkey.length > 0) {
       loginWithPubkey(pubkey)
     }

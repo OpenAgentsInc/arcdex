@@ -4,6 +4,7 @@ use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\ChannelMessageController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DiscoverController;
+use App\Http\Controllers\LanderController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\VideoController;
 use App\Models\Channel;
@@ -14,9 +15,11 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [LanderController::class, 'index'])->name('home');
+
+Route::get('/videos', function () {
+    return view('videos');
+})->name('videos');
 
 Route::get('/discover', [DiscoverController::class, 'index'])->name('discover');
 

@@ -12,7 +12,7 @@
   }
 
   .nice-scrollbar {
-    @apply scrollbar scrollbar-track-gray-900 scrollbar-thumb-purple-500 scrollbar-thumb-rounded scrollbar-w-2;
+    @apply scrollbar scrollbar-track-gray-900 scrollbar-thumb-indigo-500 scrollbar-thumb-rounded scrollbar-w-2;
   }
 
   /* reset */

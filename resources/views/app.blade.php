@@ -13,7 +13,7 @@
     @inertiaHead
 </head>
 
-<body class="antialiased font-sans h-full">
+<body class="antialiased font-sans h-full nice-scrollbar">
     <div class="bg-gray-100 dark:bg-gray-900 h-full">
         @inertia
     </div>
