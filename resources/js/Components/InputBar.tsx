@@ -1,38 +1,18 @@
 import * as React from 'react'
-import {
-  broadcastToRelay,
-  connectToRelay,
-  TimeRanges,
-} from '@nostr-connect/connect'
+import { broadcastToRelay, connectToRelay } from '@nostr-connect/connect'
 import { useForm, usePage } from '@inertiajs/react'
-import {
-  generatePrivateKey,
-  getEventHash,
-  getPublicKey,
-  nip26,
-  signEvent,
-  UnsignedEvent,
-} from 'nostr-tools'
 import { useStore } from '../store'
-import { webPK } from '../login/LoginScreen'
-import { secretKey } from '../Layout'
-import { isDelegatedEventValid } from '../nostr'
-import { Event } from '../nostr/@types/event'
-import { EventKinds } from '../nostr/constants/base'
-import { getDelegator } from '../nostr/getDelegator'
 import { useDelegation } from '../hooks/useDelegation'
 
 export const InputBar = () => {
   const { channel } = usePage().props as any
   const { signDelegatedEvent } = useDelegation()
-
-  const { data, setData, post, processing, errors } = useForm({
+  const connect = useStore((state) => state.connect)
+  const { data, setData, post } = useForm({
     content: '',
     eventid: '',
     relayurl: '',
   })
-
-  const connect = useStore((state) => state.connect)
 
   const sendMessage = async (e) => {
     e.preventDefault()
