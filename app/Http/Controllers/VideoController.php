@@ -197,6 +197,17 @@ class VideoController extends Controller
                     'name' => 'Christopher David'
                 ]
             ],
+            [
+                'id' => 20,
+                'title' => 'Refactoring Login & Delegation',
+                'subtitle' => "We do some boring refactoring, then complete our NIP-26 integration by reusing delegations and showing the correct user pubkey on messages.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc20.mp4',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
+            ],
+
         ];
 
         try {
