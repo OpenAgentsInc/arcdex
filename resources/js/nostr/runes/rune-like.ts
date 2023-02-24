@@ -6,7 +6,6 @@ export class RuneLike implements IRuneLike {
 
   public test(values: Record<string, unknown>): [boolean, string] {
     for (const restriction of this.restrictions) {
-      console.log('restriction:', restriction)
       const reasons = restriction.test(values)
       if (typeof reasons !== 'undefined') {
         console.log('RETURNING FALSE BECAUSE OF REASONS:', reasons)

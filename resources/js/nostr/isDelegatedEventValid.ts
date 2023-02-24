@@ -21,7 +21,7 @@ export const isDelegatedEventValid = async (event: Event): Promise<boolean> => {
     (tag) => tag.length === 4 && tag[0] === EventTags.Delegation
   )
 
-  console.log(delegation)
+  //   console.log(delegation)
 
   if (!delegation) {
     return false
@@ -42,13 +42,13 @@ export const isDelegatedEventValid = async (event: Event): Promise<boolean> => {
     ]) as any
   )(event)
 
-  console.log('runifiedEvent:', runifiedEvent)
-  console.log('So we are creating a RuneLike from:', delegation[2])
+  //   console.log('runifiedEvent:', runifiedEvent)
+  //   console.log('So we are creating a RuneLike from:', delegation[2])
 
   let result: boolean
   try {
     ;[result] = RuneLike.from(delegation[2]).test(runifiedEvent)
-    console.log('result huh:', result)
+    // console.log('result huh:', result)
   } catch (error) {
     result = false
     console.log('result false:', result)
@@ -62,31 +62,31 @@ export const isDelegatedEventValid = async (event: Event): Promise<boolean> => {
 
   const serializedDelegationTag = `nostr:${delegation[0]}:${event.pubkey}:${delegation[2]}`
 
-  console.log('serializedDelegationTag', serializedDelegationTag)
+  //   console.log('serializedDelegationTag', serializedDelegationTag)
 
   const token = await secp256k1.utils.sha256(
     Buffer.from(serializedDelegationTag)
   )
 
-  console.log('token:', token)
+  //   console.log('token:', token)
 
   // convert token to hex
   const tokenHex = Buffer.from(token).toString('hex')
-  console.log('tokenHex is:', tokenHex)
+  //   console.log('tokenHex is:', tokenHex)
 
-  console.log(
-    'NOW PASSING THESE THINGS TO SCHNORR VERIFIY',
-    delegation[3],
-    tokenHex,
-    delegation[1]
-  )
+  //   console.log(
+  //     'NOW PASSING THESE THINGS TO SCHNORR VERIFIY',
+  //     delegation[3],
+  //     tokenHex,
+  //     delegation[1]
+  //   )
 
   //   try {
-  const verified = await secp256k1.schnorr.verify(
-    delegation[3],
-    tokenHex,
-    delegation[1]
-  )
+  //   const verified = await secp256k1.schnorr.verify(
+  //     delegation[3],
+  //     tokenHex,
+  //     delegation[1]
+  //   )
   //   console.log(verified)
   //   } catch (error) {
   // console.log('ERROR VERIFYING:', error)
