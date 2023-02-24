@@ -5,13 +5,14 @@ import { secretKey } from '../nostr/nostrConnect'
 import { login } from '../auth'
 
 export function useNostrConnect() {
+  console.log('Hello from useNostrConnect')
   const [pubkey, setPubkey] = useStatePersist('@pubkey', '')
   const loginWithPubkey = async (pubkey: string) => {
     const authed = await login(pubkey)
-    if (authed) {
+    if (authed && window.location.pathname === '/login') {
       console.log('Login successful')
       // Redirect user to /chat
-      //   window.location.replace('/chat')
+      window.location.replace('/chat')
     }
   }
   useEffect(() => {

@@ -1,6 +1,12 @@
 import { createInertiaApp } from '@inertiajs/react'
 import { createRoot } from 'react-dom/client'
+import { useNostrConnect } from './hooks/useNostrConnect'
 import { Layout } from './Layout'
+
+const Provider = ({ children }) => {
+  useNostrConnect()
+  return <>{children}</>
+}
 
 createInertiaApp({
   resolve: (name) => {
@@ -9,9 +15,12 @@ createInertiaApp({
     page.default.layout =
       page.default.layout || ((page) => <Layout children={page} />)
     return page
-    // return pages[`./Pages/${name}.jsx`]
   },
   setup({ el, App, props }) {
-    createRoot(el).render(<App {...props} />)
+    createRoot(el).render(
+      <Provider>
+        <App {...props} className="h-full" />
+      </Provider>
+    )
   },
 })

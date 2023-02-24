@@ -4,7 +4,7 @@ import { NostrConnectButton } from './NostrConnectButton'
 import { NostrConnectExplainer } from './NostrConnectExplainer'
 
 export const LoginScreen = () => {
-  useNostrConnect()
+  //   useNostrConnect()
   return (
     <div className="font-sans text-white h-full w-full bg-gray-900 flex flex-col justify-center items-center space-y-10">
       <img

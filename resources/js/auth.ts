@@ -14,20 +14,20 @@ const disconnect = async () => {
   // setGetPublicKeyReply('')
 }
 
-export const logout = async () => {
-  console.log('logging out...')
-  await disconnect()
-  await axios.post(
-    '/logout',
-    {},
-    {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-  )
-  console.log('logged out?')
-}
+// export const logout = async () => {
+//   console.log('logging out...')
+//   await disconnect()
+//   await axios.post(
+//     '/logout',
+//     {},
+//     {
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     }
+//   )
+//   console.log('logged out?')
+// }
 
 export const login = async (pubkey: string) => {
   await axios.get('/sanctum/csrf-cookie', {

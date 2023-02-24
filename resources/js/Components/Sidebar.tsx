@@ -2,9 +2,16 @@ import * as React from 'react'
 import { usePage } from '@inertiajs/react'
 import { NewChannelForm } from './NewChannelForm'
 import { ChannelDetail } from './ChannelDetail'
+import { useStore } from '../store'
+import { useStatePersist } from 'use-state-persist'
 
 export const Sidebar = () => {
   const { channels } = usePage().props
+  const logout = useStore((state) => state.logout)
+  const [, setPubkey] = useStatePersist('@pubkey', '')
+  const clickedLogout = () => {
+    logout(setPubkey)
+  }
   return (
     <div className="flex bg-gray-900">
       <div className="hidden md:flex md:flex-shrink-0 ">
@@ -27,11 +34,12 @@ export const Sidebar = () => {
               </div>
             </nav>
           </div>
-          <a href="/logout">
-            <button className="h-12 flex items-center justify-center w-full text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-              Log out
-            </button>
-          </a>
+          <button
+            onClick={clickedLogout}
+            className="h-12 flex items-center justify-center w-full text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+          >
+            Log out
+          </button>
         </div>
       </div>
     </div>

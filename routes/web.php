@@ -4,6 +4,7 @@ use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\ChannelMessageController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DiscoverController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\VideoController;
 use App\Models\Channel;
 use App\Models\User;
@@ -18,6 +19,8 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/discover', [DiscoverController::class, 'index'])->name('discover');
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/chat', [ChatController::class, 'index'])->name('chat');
@@ -38,9 +41,7 @@ Route::any('/logout', function () {
     return redirect()->route('home');
 })->name('logout');
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+
 
 Route::post('/login', function (Request $request) {
     // if user is already logged in, log them out
