@@ -30,7 +30,7 @@
 
 <script>
   const audio = document.getElementById("my-audio");
-  const mp3Files = [
+  let mp3Files = [
     "https://d22hdgrsmzgwgk.cloudfront.net/lofi/01%20Kupla%20-%20Eons%20%28master%29.mp3",
     "https://d22hdgrsmzgwgk.cloudfront.net/lofi/02 Kupla - Heroes (master 5).mp3",
     "https://d22hdgrsmzgwgk.cloudfront.net/lofi/03 Kupla - A Waltz for My Best Friend (master 2).mp3",
@@ -48,6 +48,10 @@
     "https://d22hdgrsmzgwgk.cloudfront.net/lofi/15 Kupla - Last Walk (master 2).mp3",
     "https://d22hdgrsmzgwgk.cloudfront.net/lofi/16 Kupla - Safe Haven (Master).mp3",
   ];
+
+    // Randomize the array of mp3 mp3Files
+  mp3Files.sort(() => Math.random() - 0.5);
+
   
   let currentTrackIndex = 0; // Keep track of the index of the currently playing track
 
