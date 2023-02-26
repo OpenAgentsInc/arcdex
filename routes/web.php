@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AudioController;
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\ChannelMessageController;
 use App\Http\Controllers\ChatController;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LanderController::class, 'index'])->name('home');
+Route::get('/lofi', [AudioController::class, 'lofi'])->name('lofi');
 
 Route::get('/videos', function () {
     return view('videos');
@@ -33,9 +35,6 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/api/channel/{channel}/messages', [ChannelMessageController::class, 'store']);
 });
-
-
-
 
 Route::get('/video/{id}', [VideoController::class, 'show']);
 
