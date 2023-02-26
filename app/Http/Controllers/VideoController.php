@@ -227,6 +227,16 @@ class VideoController extends Controller
                     'name' => 'Christopher David'
                 ]
             ],
+             [
+                'id' => 23,
+                'title' => 'Lofi Audio Player',
+                'subtitle' => "We build an audio player to listen to Lofi Girl music while we code.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc23.mp4',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
+            ],
         ];
 
         try {
