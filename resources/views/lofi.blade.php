@@ -20,7 +20,7 @@
       </div>
       <div class="mt-4 md:mt-0 md:ml-6 text-center md:text-left">
         <p class="text-lg leading-tight font-semibold text-gray-900">Thank you Lofi Girl for the music!</p>
-        <p class="text-gray-600">All music from <a href="https://lofigirl.com" class="text-blue-500 hover:text-blue-600">Lofi Girl</a></p>
+        <p class="text-gray-600">All music from <a href="https://lofigirl.com" target="_blank" class="text-blue-500 hover:text-blue-600">Lofi Girl</a></p>
       </div>
     </div>
   </div>
