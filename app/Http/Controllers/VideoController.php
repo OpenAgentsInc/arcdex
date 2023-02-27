@@ -237,6 +237,16 @@ class VideoController extends Controller
                     'name' => 'Christopher David'
                 ]
             ],
+              [
+                'id' => 24,
+                'title' => 'Restyling & Building v0.0.3',
+                'subtitle' => "We restyle Nostrum components with Tamagui, then build the beta v0.0.3 app for release.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc24.mp4',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
+            ]
         ];
 
         try {
