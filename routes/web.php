@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LanderController::class, 'index'])->name('home');
+Route::get('/beta', [LanderController::class, 'beta'])->name('beta');
+
 Route::get('/lofi', [AudioController::class, 'lofi'])->name('lofi');
 
 Route::get('/videos', function () {

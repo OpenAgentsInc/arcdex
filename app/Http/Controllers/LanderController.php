@@ -10,4 +10,9 @@ class LanderController extends Controller
     {
         return Inertia::render('Lander/Home');
     }
+
+    public function beta()
+    {
+        return Inertia::render('Lander/Beta');
+    }
 }

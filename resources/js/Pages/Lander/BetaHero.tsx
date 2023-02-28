@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { ChevronRightIcon } from '@heroicons/react/20/solid'
 
-export const DarkHero = () => {
+export const BetaHero = () => {
   return (
     <div className="relative isolate overflow-hidden bg-gray-900">
       <svg
@@ -59,53 +59,34 @@ export const DarkHero = () => {
       </svg>
       <div className="mx-auto max-w-7xl px-6 pt-10 pb-24 sm:pb-32 lg:flex lg:py-40 lg:px-8">
         <div className="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8">
-          <img className="h-24" src="/img/logo.png" alt="logo" />
-          <div className="mt-24 sm:mt-32 lg:mt-12">
-            <a href="/video/24" className="inline-flex space-x-6">
-              <span className="rounded-full bg-indigo-500/10 px-3 py-1 text-sm font-semibold leading-6 text-indigo-400 ring-1 ring-inset ring-indigo-500/20">
-                What's new
-              </span>
-              <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-300">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6 opacity-75"
-                >
-                  <path
-                    strokeLinecap="round"
-                    d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"
-                  />
-                </svg>
-                <span>Building Arc #24: Restyling & Building v0.0.3</span>
-                <ChevronRightIcon
-                  className="h-5 w-5 text-gray-500"
-                  aria-hidden="true"
-                />
-              </span>
-            </a>
-          </div>
+          <a href="/">
+            <img className="h-24" src="/img/logo.png" alt="logo" />
+          </a>
+          <div className="mt-24 sm:mt-32 lg:mt-12"></div>
           <h1 className="mt-10 text-4xl font-bold tracking-tight text-white sm:text-6xl">
-            Connect freely.
+            Join the Arc beta
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-300">
-            Chat and pay at the speed of Lightning on Nostr.
+            If you like bugs and pain, download an Arc beta build for Android or
+            iOS.
           </p>
           <div className="mt-10 flex items-center gap-x-6">
             <a
-              href="/beta"
+              href="https://testflight.apple.com/join/BqBPSM3R"
+              target="_blank"
               className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
             >
-              Join the beta
+              Join TestFlight (iOS)
             </a>
+
             <a
-              href="/videos"
-              className="text-sm font-semibold leading-6 text-white"
+              href="https://github.com/ArcadeLabsInc/arc/releases"
+              target="_blank"
+              className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
             >
-              Building Arc <span aria-hidden="true">→</span>
+              Download APK (Android)
             </a>
+
             {/* <a href="#" className="text-sm font-semibold leading-6 text-white">
               Learn more <span aria-hidden="true">→</span>
             </a> */}
