@@ -246,7 +246,18 @@ class VideoController extends Controller
                     'id' => 1,
                     'name' => 'Christopher David'
                 ]
+      ],
+      [
+                'id' => 25,
+                'title' => 'Releasing v0.0.3',
+                'subtitle' => "We finalize the Android build and make a beta webpage with v0.0.3 download links.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc25.mp4',
+                'user' => [
+                    'id' => 1,
+                    'name' => 'Christopher David'
+                ]
             ]
+
         ];
 
         try {

@@ -61,12 +61,16 @@ export const DarkHero = () => {
         <div className="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8">
           <img className="h-24" src="/img/logo.png" alt="logo" />
           <div className="mt-24 sm:mt-32 lg:mt-12">
-            <a href="/video/24" className="inline-flex space-x-6">
+            <a
+              href="https://github.com/ArcadeLabsInc/arc/releases/tag/v0.0.3-alpha"
+              target="_blank"
+              className="inline-flex space-x-6"
+            >
               <span className="rounded-full bg-indigo-500/10 px-3 py-1 text-sm font-semibold leading-6 text-indigo-400 ring-1 ring-inset ring-indigo-500/20">
                 What's new
               </span>
               <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-300">
-                <svg
+                {/*  <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -78,8 +82,23 @@ export const DarkHero = () => {
                     strokeLinecap="round"
                     d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"
                   />
+                </svg> */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
+                  />
                 </svg>
-                <span>Building Arc #24: Restyling & Building v0.0.3</span>
+
+                <span>v0.0.3 released!</span>
                 <ChevronRightIcon
                   className="h-5 w-5 text-gray-500"
                   aria-hidden="true"
