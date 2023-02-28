@@ -67,8 +67,8 @@ export const BetaHero = () => {
             Join the Arc beta
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-300">
-            If you like bugs and pain, download an Arc beta build for Android or
-            iOS.
+            If you like bugs and the bleeding edge, download an Arc beta build
+            for Android or iOS.
           </p>
           <div className="mt-10 flex items-center gap-x-6">
             <a
