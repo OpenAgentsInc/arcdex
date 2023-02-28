@@ -3,20 +3,22 @@ import * as React from 'react'
 import { InputBar } from '../../Components/InputBar'
 import { Message } from '../../Components/Message'
 import { relayInit } from 'nostr-tools'
-import { checkRelayForEvent } from '../../nostr'
-
-interface MessageType {
-  id: string
-  user: string
-  text: string
-  time: string
-  unread: boolean
-}
+import { checkRelayForUserMetadata } from '../../nostr/checkRelayForUserMetadata'
 
 const Channel = () => {
   const { channel, messages: rawMessages } = usePage().props as any
   const [channelMessages, setChannelMessages] = React.useState<any>([])
 
+  React.useEffect(() => {
+    // Check relay for user metadata for pubkey 33ffc3e33c4a4976a7b4bf201551678c9304e344f138b7af22acd91a60a3b545
+    const pubkey =
+      '33ffc3e33c4a4976a7b4bf201551678c9304e344f138b7af22acd91a60a3b545'
+    const checkit = async () => {
+      const metadata = await checkRelayForUserMetadata(pubkey)
+      console.log('Metadata:', metadata)
+    }
+    checkit()
+  }, [])
   //   React.useEffect(() => {
   //     const eventId =
   //       'ae5a7ee7eddf8710e7c19c6ee3fc66fb4c60f36c01fc82f6801e36eba984dfa9'
