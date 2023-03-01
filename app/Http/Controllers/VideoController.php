@@ -196,6 +196,12 @@ class VideoController extends Controller
                 'title' => 'Video Uploader',
                 'subtitle' => 'We build a video uploader while learning about programmatic access to Amazon S3 via Laravel.',
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc26_60d663dc81776864aed02bbc0be0bfda.mp4'
+            ],
+            [
+                'id' => 27,
+                'title' => 'Exploring the ChatGPT API',
+                'subtitle' => 'We explore the ChatGPT API and build a simple chatbot.',
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc27_9f8860f01cd33bde7fc507d2372d4f02.mp4'
             ]
         ];
     }
