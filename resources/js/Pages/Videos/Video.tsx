@@ -3,7 +3,7 @@ import * as React from 'react'
 export const Video = ({ video }) => (
   <a
     href={`/video/${video.id}`}
-    className="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-indigo-500"
+    className="scale-100 p-4 sm:p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-indigo-500"
   >
     <div className="flex-grow">
       <div className="h-12 w-12 bg-indigo-50 dark:bg-indigo-800/20 flex flex-grow items-center justify-center rounded-full">
@@ -35,7 +35,7 @@ export const Video = ({ video }) => (
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth="1.5"
-      className="self-center shrink-0 stroke-indigo-500 w-6 h-6 mx-6"
+      className="self-center shrink-0 stroke-indigo-500 w-6 h-6 mx-1 sm:mx-6"
     >
       <path
         strokeLinecap="round"
