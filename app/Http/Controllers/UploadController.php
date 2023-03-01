@@ -67,18 +67,18 @@ class UploadController extends BaseController
     {
         $fileName = $this->createFilename($file);
 
-        $title = $request->get('title');
-        $subtitle = $request->get('subtitle');
-        $series_name = $request->get('series_name');
-        $episode_number = $request->get('episode_number');
+        // $title = $request->get('title');
+        // $subtitle = $request->get('subtitle');
+        // $series_name = $request->get('series_name');
+        // $episode_number = $request->get('episode_number');
 
-        Video::create([
-            'title' => $title,
-            'subtitle' => $subtitle,
-            'series_name' => $series_name,
-            'episode_number' => $episode_number,
-            'url' => "https://d22hdgrsmzgwgk.cloudfront.net/uploads/" . $fileName
-        ]);
+        // Video::create([
+        //     'title' => $title,
+        //     'subtitle' => $subtitle,
+        //     'series_name' => $series_name,
+        //     'episode_number' => $episode_number,
+        //     'url' => "https://d22hdgrsmzgwgk.cloudfront.net/uploads/" . $fileName
+        // ]);
 
         Storage::putFileAs('uploads', $file, $fileName);
 
@@ -91,7 +91,8 @@ class UploadController extends BaseController
         return response()->json([
             'path' => Storage::url($fileName),
             'name' => $fileName,
-            'mime_type' =>$mime
+            'mime_type' => $mime,
+            'url' => "https://d22hdgrsmzgwgk.cloudfront.net/uploads/" . $fileName,
         ]);
     }
 
