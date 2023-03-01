@@ -1,5 +1,6 @@
 import { usePage } from '@inertiajs/react'
 import * as React from 'react'
+import { Glow } from '../Lander/Glow'
 import { Video } from './Video'
 
 export default function VideoIndex() {
