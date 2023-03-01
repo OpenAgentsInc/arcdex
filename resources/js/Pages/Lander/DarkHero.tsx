@@ -90,7 +90,7 @@ export const DarkHero = () => {
           <VideoBlurb video={video} />
         </div>
 
-        <div className="mt-16 sm:mt-24 lg:-mt-20 lg:flex-shrink-0 lg:flex-grow">
+        <div className="mt-16 sm:mt-24 lg:-mt-4 lg:flex-shrink-0 lg:flex-grow">
           <svg
             viewBox="0 0 366 729"
             role="img"

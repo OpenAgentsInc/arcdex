@@ -86,14 +86,10 @@ export const BetaHero = () => {
             >
               Download APK (Android)
             </a>
-
-            {/* <a href="#" className="text-sm font-semibold leading-6 text-white">
-              Learn more <span aria-hidden="true">→</span>
-            </a> */}
           </div>
         </div>
 
-        <div className="mt-16 sm:mt-24 lg:-mt-20 lg:flex-shrink-0 lg:flex-grow">
+        <div className="mt-16 sm:mt-24 lg:-mt-12 lg:flex-shrink-0 lg:flex-grow">
           <svg
             viewBox="0 0 366 729"
             role="img"
