@@ -6,9 +6,23 @@
     "framework",
     "laravel"
   ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/maciek-szn/laravel-chunk-upload.git",
+      "branch": "patch-1"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:ArcadeLabsInc/openai-php-client.git",
+      "branch": "main"
+    }
+  ],
   "license": "MIT",
+  "minimum-stability": "dev",
   "require": {
     "php": "^8.1",
+    "arcadelabsinc/openai-php-client": "dev-main",
     "guzzlehttp/guzzle": "^7.2",
     "inertiajs/inertia-laravel": "^0.6.9",
     "laravel/framework": "^10.0",
@@ -69,14 +83,5 @@
       "pestphp/pest-plugin": true,
       "php-http/discovery": true
     }
-  },
-  "minimum-stability": "stable",
-  "prefer-stable": true,
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/maciek-szn/laravel-chunk-upload.git",
-      "branch": "patch-1"
-    }
-  ]
+  }
 }
