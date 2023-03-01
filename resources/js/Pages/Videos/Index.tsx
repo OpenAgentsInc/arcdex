@@ -10,7 +10,7 @@ export default function VideoIndex() {
         className="flex-1 relative z-0 overflow-y-auto focus:outline-none nice-scrollbar"
         tabIndex={0}
       >
-        <div className="max-w-7xl mx-auto p-6 lg:p-8">
+        <div className="max-w-7xl mx-auto lg:p-8">
           <div className="my-4 flex flex-col justify-center items-center">
             <a href="/">
               <img
@@ -29,7 +29,7 @@ export default function VideoIndex() {
           </div>
 
           <div className="mx-auto h-full">
-            <div className="p-12">
+            <div className="p-4 lg:p-12">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                 {videos.map((video: any) => {
                   return <Video video={video} key={video.id} />

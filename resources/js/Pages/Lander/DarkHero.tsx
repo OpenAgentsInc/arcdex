@@ -60,13 +60,21 @@ export const DarkHero = () => {
       <div className="mx-auto max-w-7xl px-6 pt-10 pb-24 sm:pb-32 lg:flex lg:py-40 lg:px-8">
         <div className="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8">
           <img className="h-24" src="/img/logo.png" alt="logo" />
-          <div className="mt-24 sm:mt-32 lg:mt-12">
+          <div className="mt-12 lg:mt-12">
             <a
               href="https://github.com/ArcadeLabsInc/arc/releases/tag/v0.0.3-alpha"
               target="_blank"
               className="inline-flex space-x-6"
             >
-              <span className="rounded-full bg-indigo-500/10 px-3 py-1 text-sm font-semibold leading-6 text-indigo-400 ring-1 ring-inset ring-indigo-500/20">
+              <span
+                className="line-clamp-1 rounded-full bg-indigo-500/10 px-3 py-1 text-sm font-semibold leading-6 text-indigo-400 ring-1 ring-inset ring-indigo-500/20"
+                style={{
+                  whiteSpace: 'nowrap',
+                  width: 100,
+                  height: 33,
+                  flexShrink: 0,
+                }}
+              >
                 What's new
               </span>
               <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-300">
@@ -125,9 +133,6 @@ export const DarkHero = () => {
               </svg>
               Building Arc <span aria-hidden="true">→</span>
             </a>
-            {/* <a href="#" className="text-sm font-semibold leading-6 text-white">
-              Learn more <span aria-hidden="true">→</span>
-            </a> */}
           </div>
         </div>
 
