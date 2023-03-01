@@ -4,9 +4,11 @@ use App\Http\Controllers\AudioController;
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\ChannelMessageController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\DependencyUploadController;
 use App\Http\Controllers\DiscoverController;
 use App\Http\Controllers\LanderController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\VideoController;
 use App\Models\Channel;
 use App\Models\User;
@@ -18,6 +20,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LanderController::class, 'index'])->name('home');
 Route::get('/beta', [LanderController::class, 'beta'])->name('beta');
+
+// Define a route only if we are in the local app_env
+if (app()->environment('local')) {
+    Route::get('/pv', function () {
+        return view('pv');
+    })->name('pv');
+
+    Route::post('upload', [DependencyUploadController::class, 'uploadFile']);
+}
 
 Route::get('/lofi', [AudioController::class, 'lofi'])->name('lofi');
 
@@ -32,6 +43,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/chat', [ChatController::class, 'index'])->name('chat');
     Route::get('/channel/{channel}', [ChannelController::class, 'show'])->name('channel');
+    Route::post('/video-upload', [UploadController::class, 'store'])->name('video-upload');
 });
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
