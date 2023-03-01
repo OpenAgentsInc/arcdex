@@ -62,7 +62,7 @@ export const BetaHero = () => {
           <a href="/">
             <img className="h-24" src="/img/logo.png" alt="logo" />
           </a>
-          <div className="mt-24 sm:mt-32 lg:mt-12"></div>
+          <div className="mt-6 sm:mt-32 lg:mt-12"></div>
           <h1 className="mt-10 text-4xl font-bold tracking-tight text-white sm:text-6xl">
             Join the Arc beta
           </h1>
