@@ -1,5 +1,5 @@
 import { ConnectURI } from '@nostr-connect/connect'
-import { generatePrivateKey, getPublicKey } from 'nostr-tools'
+import { getPublicKey } from 'nostr-tools'
 
 // export const secretKey = generatePrivateKey()
 export const secretKey =
