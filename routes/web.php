@@ -43,7 +43,6 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/chat', [ChatController::class, 'index'])->name('chat');
     Route::get('/channel/{channel}', [ChannelController::class, 'show'])->name('channel');
-    Route::post('/video-upload', [UploadController::class, 'store'])->name('video-upload');
 });
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
