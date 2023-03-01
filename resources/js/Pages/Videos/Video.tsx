@@ -3,16 +3,16 @@ import * as React from 'react'
 export const Video = ({ video }) => (
   <a
     href={`/videos/${video.id}`}
-    className="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
+    className="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-indigo-500"
   >
     <div>
-      <div className="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
+      <div className="h-16 w-16 bg-indigo-50 dark:bg-indigo-800/20 flex items-center justify-center rounded-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth="1.5"
-          className="w-7 h-7 stroke-red-500"
+          className="w-7 h-7 stroke-indigo-500"
         >
           <path
             strokeLinecap="round"
@@ -35,7 +35,7 @@ export const Video = ({ video }) => (
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth="1.5"
-      className="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6"
+      className="self-center shrink-0 stroke-indigo-500 w-6 h-6 mx-6"
     >
       <path
         strokeLinecap="round"
