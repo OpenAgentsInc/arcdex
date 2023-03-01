@@ -23,6 +23,7 @@ export const useStore = create<Store>((set) => ({
       connect = new Connect({
         secretKey,
         target: pubkey,
+        relay: 'wss://arc1.arcadelabs.co',
       })
       return
     }

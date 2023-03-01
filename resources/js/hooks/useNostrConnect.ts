@@ -26,6 +26,7 @@ export function useNostrConnect() {
       const connect = new Connect({
         secretKey,
         target,
+        relay: 'wss://arc1.arcadelabs.co',
       })
       connect.events.on('connect', (pubkey: string) => {
         setPubkey(pubkey)
