@@ -833,7 +833,9 @@
     <div
         class="relative sm:flex sm:justify-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
         <div class="flex flex-col items-center mt-16">
-            <h3 style="color: rgb(116,65,244);" class="uppercase font-sm mb-4 tracking-wider">Building Arc</h3>
+            <a href="/videos">
+                <h3 style="color: rgb(116,65,244);" class="uppercase font-sm mb-4 tracking-wider">Building Arc</h3>
+            </a>
             <h1 class="text-2xl text-center dark:text-white font-bold mb-4">{{ $video['title'] }}</h1>
             <h3 class="text-gray-500 dark:text-gray-400 mb-12">{{ $video['subtitle'] }}</h3>
 

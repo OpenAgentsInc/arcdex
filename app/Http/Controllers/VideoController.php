@@ -184,6 +184,12 @@ class VideoController extends Controller
                 'title' => 'Releasing v0.0.3',
                 'subtitle' => "We finalize the Android build and make a beta webpage with v0.0.3 download links.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc25.mp4',
+            ],
+            [
+                'id' => 26,
+                'title' => 'Video Uploader',
+                'subtitle' => 'We build a video uploader while learning about programmatic access to Amazon S3 via Laravel.',
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc26_60d663dc81776864aed02bbc0be0bfda.mp4'
             ]
         ];
     }
