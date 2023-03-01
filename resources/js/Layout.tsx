@@ -6,7 +6,7 @@ import { useStore } from './store'
 import { getPublicKey } from 'nostr-tools'
 import { Sidebar } from './Components/Sidebar'
 import { secretKey } from './nostr/nostrConnect'
-import { useNostrConnect } from './hooks/useNostrConnect'
+// import { useNostrConnect } from './hooks/useNostrConnect'
 
 const connectURI = new ConnectURI({
   target: getPublicKey(secretKey),
