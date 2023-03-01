@@ -5,6 +5,7 @@ import { secretKey } from '../nostr/nostrConnect'
 import { login } from '../auth'
 
 export function useNostrConnect() {
+  if (window.location.pathname === '/videos') return []
   const [pubkey, setPubkey] = useStatePersist('@pubkey', '')
   const loginWithPubkey = async (pubkey: string) => {
     const authed = await login(pubkey)

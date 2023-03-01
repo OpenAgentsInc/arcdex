@@ -8,7 +8,7 @@ export const secretKey =
 export const generateNostrConnectUri = () => {
   const connectURI = new ConnectURI({
     target: getPublicKey(secretKey),
-    relay: 'wss://nostr.vulpem.com',
+    relay: 'wss://arc1.arcadelabs.co',
     metadata: {
       name: 'Arc',
       description: 'Arcdex web app',

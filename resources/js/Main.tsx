@@ -213,7 +213,7 @@ export function ChatDemo({ channels }) {
     }
     event.id = getEventHash(event)
     event.sig = await connect.signEvent(event)
-    const relayurl = 'wss://nostr.vulpem.com'
+    const relayurl = 'wss://arc1.arcadelabs.co'
     const relay = await connectToRelay(relayurl)
     await broadcastToRelay(relay, event, true)
 

@@ -14,7 +14,7 @@ import { secretKey } from './nostr/nostrConnect'
 
 const connectURI = new ConnectURI({
   target: getPublicKey(secretKey),
-  relay: 'wss://nostr.vulpem.com',
+  relay: 'wss://arc1.arcadelabs.co',
   metadata: {
     name: 'Arcdex Example Take 2',
     description: 'Hello world',

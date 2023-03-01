@@ -21,7 +21,7 @@ class ChannelFactory extends Factory
         return [
             // 'user_id' => User::factory(),
             'title' => $this->faker->words(3, true),
-            'relayurl' => 'wss://nostr.vulpem.com',
+            'relayurl' => 'wss://arc1.arcadelabs.co',
             'eventid' => $this->faker->uuid,
         ];
     }

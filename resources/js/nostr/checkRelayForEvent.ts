@@ -2,7 +2,7 @@ import { relayInit } from 'nostr-tools'
 
 export const checkRelayForEvent = async (
   eventId,
-  relayUrl = 'wss://nostr.vulpem.com'
+  relayUrl = 'wss://arc1.arcadelabs.co'
 ) => {
   const relay = relayInit(relayUrl)
   relay.on('connect', () => {
