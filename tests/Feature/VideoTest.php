@@ -1,11 +1,26 @@
 <?php
 
-// test('building arc channel renders', function () {
-//     $response = $this->get('/channel/building-arc');
+use App\Http\Controllers\VideoController;
+use Inertia\Testing\AssertableInertia as Assert;
 
-//     $response->assertStatus(200)
-//         ->assertViewIs('channel');
-// });
+test('videos page has videos', function () {
+    $response = $this->get('/videos');
+
+   // get the number of videos from the VideoController getVideos method
+    $videoCount = count((new VideoController())->getVideos());
+
+    $response->assertStatus(200);
+    $response->assertInertia(function (Assert $page) use ($videoCount) {
+            $page->has('videos', $videoCount, function (Assert $video) {
+                $video->hasAll([
+                    'id',
+                    'title',
+                    'subtitle',
+                    'url',
+                ]);
+            });
+        });
+});
 
 test('video page renders', function () {
     $response = $this->get('/video/1');

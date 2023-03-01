@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LanderController::class, 'index'])->name('home');
 Route::get('/beta', [LanderController::class, 'beta'])->name('beta');
+Route::get('/videos', [VideoController::class, 'index'])->name('videos');
 
 // Define a route only if we are in the local app_env
 if (app()->environment('local')) {
@@ -31,10 +32,6 @@ if (app()->environment('local')) {
 }
 
 Route::get('/lofi', [AudioController::class, 'lofi'])->name('lofi');
-
-Route::get('/videos', function () {
-    return view('videos');
-})->name('videos');
 
 Route::get('/discover', [DiscoverController::class, 'index'])->name('discover');
 
