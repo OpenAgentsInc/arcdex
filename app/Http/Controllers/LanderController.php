@@ -8,7 +8,11 @@ class LanderController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Lander/Home');
+        $videos = VideoController::grabVideos();
+        $mostRecentVideo = $videos[count($videos) - 1];
+        return Inertia::render('Lander/Home', [
+            'video' => $mostRecentVideo,
+        ]);
     }
 
     public function beta()

@@ -32,6 +32,12 @@ class VideoController extends Controller
         }
     }
 
+    public static function grabVideos()
+    {
+        $videos = (new self)->getVideos();
+        return $videos;
+    }
+
     public function getVideos()
     {
         return [
