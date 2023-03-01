@@ -64,7 +64,7 @@ export const DarkHero = () => {
             <a
               href="https://github.com/ArcadeLabsInc/arc/releases/tag/v0.0.3-alpha"
               target="_blank"
-              className="inline-flex space-x-6"
+              className="inline-flex space-x-4"
             >
               <span
                 className="line-clamp-1 rounded-full bg-indigo-500/10 px-3 py-1 text-sm font-semibold leading-6 text-indigo-400 ring-1 ring-inset ring-indigo-500/20"
