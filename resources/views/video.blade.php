@@ -826,13 +826,13 @@
 <body class="h-full dark:bg-gray-800">
 
     <!-- top-left logo that links back to the homepage -->
-    <a href="/" class="absolute top-0 left-0 p-8 z-10">
-        <img src="/img/logo.png" alt="logo" class="w-16">
+    <a href="/" class="absolute top-0 left-0 sm:p-8 z-10 p-4">
+        <img src="/img/logo.png" alt="logo" class="w-12 sm:w-16">
     </a>
 
     <div
         class="relative sm:flex sm:justify-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-        <div class="flex flex-col items-center mt-16">
+        <div class="flex flex-col items-center pt-16">
             <a href="/videos">
                 <h3 style="color: rgb(116,65,244);" class="uppercase font-sm mb-4 tracking-wider">Building Arc</h3>
             </a>
