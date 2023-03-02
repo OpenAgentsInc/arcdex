@@ -202,6 +202,12 @@ class VideoController extends Controller
                 'title' => 'Exploring the ChatGPT API',
                 'subtitle' => 'We explore the ChatGPT API and build a simple chatbot.',
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc27_9f8860f01cd33bde7fc507d2372d4f02.mp4'
+            ],
+            [
+                'id' => 28,
+                'title' => 'App Refactor Planning',
+                'subtitle' => "We plan the major refactor for v0.0.4, in which we'll convert the app to use our new chat API and indexer.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc28_150c124d73ce86f2321faf5c0f6775e2.mp4'
             ]
         ];
     }
