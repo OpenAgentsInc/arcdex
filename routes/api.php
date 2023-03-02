@@ -20,6 +20,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::middleware('auth:sanctum')->get('/demo', function (Request $request) {
+
+    // create five dummy channels via factory
+    // $channels = Channel::factory()->count(5)->make();
+    $channels = $request->user()->channels;
+
+    return [
+        'channels' => $channels,
+        'success' => true
+    ];
+});
 
 
 // Route::middleware('auth:sanctum')->post('/channels/{channel}/join', function (Request $request, Channel $channel) {

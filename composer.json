@@ -37,6 +37,7 @@
     "fakerphp/faker": "^1.9.1",
     "laravel/pint": "^1.0",
     "laravel/sail": "^1.18",
+    "laravel/telescope": "4.x-dev",
     "mockery/mockery": "^1.4.4",
     "nunomaduro/collision": "^6.1",
     "pestphp/pest-plugin-laravel": "^1.4",

@@ -22,18 +22,6 @@ Route::get('/', [LanderController::class, 'index'])->name('home');
 Route::get('/beta', [LanderController::class, 'beta'])->name('beta');
 Route::get('/videos', [VideoController::class, 'index'])->name('videos');
 
-
-Route::get('/api/demo', function (Request $request) {
-
-    // create five dummy channels via factory
-    $channels = Channel::factory()->count(5)->make();
-
-    return [
-        'channels' => $channels,
-        'success' => true
-    ];
-});
-
 // Define a route only if we are in the local app_env
 if (app()->environment('local')) {
     Route::get('/pv', function () {
@@ -65,6 +53,8 @@ Route::any('/logout', function () {
     return redirect()->route('home');
 })->name('logout');
 
+
+Route::post('/sanctum/token', [LoginController::class, 'apiLogin']);
 
 
 Route::post('/login', function (Request $request) {

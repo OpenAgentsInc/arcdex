@@ -214,6 +214,12 @@ class VideoController extends Controller
                 'title' => 'Deleting & Upgrading',
                 'subtitle' => "We delete a lot of app code we won't need in v0.0.4, then upgrade to Expo 48.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc29_89a806cc1efcfd539681a7cc325b1eef.mp4'
+            ],
+            [
+                'id' => 30,
+                'title' => 'API Handshake via TanStack Query',
+                'subtitle' => "We connect the app to our new API via TanStack Query, showing a list of demo channels the user has joined.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc30_1a1cfb0d81da5744ab7c31b42c6e1f79.mp4'
             ]
         ];
     }
