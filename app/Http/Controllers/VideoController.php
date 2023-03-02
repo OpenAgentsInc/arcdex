@@ -208,6 +208,12 @@ class VideoController extends Controller
                 'title' => 'App Refactor Planning',
                 'subtitle' => "We plan the major refactor for v0.0.4, in which we'll convert the app to use our new chat API and indexer.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc28_150c124d73ce86f2321faf5c0f6775e2.mp4'
+            ],
+            [
+                'id' => 29,
+                'title' => 'Deleting & Upgrading',
+                'subtitle' => "We delete a lot of app code we won't need in v0.0.4, then upgrade to Expo 48.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc29_89a806cc1efcfd539681a7cc325b1eef.mp4'
             ]
         ];
     }
