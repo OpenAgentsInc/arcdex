@@ -24,8 +24,12 @@ Route::get('/videos', [VideoController::class, 'index'])->name('videos');
 
 
 Route::get('/api/demo', function (Request $request) {
+
+    // create five dummy channels via factory
+    $channels = Channel::factory()->count(5)->make();
+
     return [
-        'message' => 'Hello from the server!',
+        'channels' => $channels,
         'success' => true
     ];
 });

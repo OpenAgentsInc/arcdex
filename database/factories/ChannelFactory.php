@@ -21,6 +21,7 @@ class ChannelFactory extends Factory
         return [
             // 'user_id' => User::factory(),
             'title' => $this->faker->words(3, true),
+            'about' => $this->faker->sentence(),
             'relayurl' => 'wss://arc1.arcadelabs.co',
             'eventid' => $this->faker->uuid,
         ];
