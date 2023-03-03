@@ -65,15 +65,16 @@ test('nonce request without device_name fails', function () {
 });
 
 
-// test('user can log in via api', function () {
-//     $user = User::factory()->create();
+test('user can log in via api', function () {
+    $this->withoutExceptionHandling();
 
-//     $response = $this->post('/sanctum/token', [
-//         'pubkey' => $user->pubkey,
-//         'device_name' => 'test device',
-//         'proof' => 'test proof',
-//     ]);
+    $response = $this->post('/api/login', [
+        'pubkey' => 'askdfjhaksdjfhkasjdhfkjsadhf',
+        'device_name' => 'test device',
+        'proof' => 'f23f23f23f23f23f23f23f',
+        'nonce' => 'asdofsodifjo2i3jfo2'
+    ]);
 
-//     $response->assertStatus(200);
-//     $response->assertJsonStructure(['token']);
-// });
+    $response->assertStatus(200)
+        ->assertJsonStructure(['token']);
+});
