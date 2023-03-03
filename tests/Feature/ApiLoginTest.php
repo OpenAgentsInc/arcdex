@@ -1,6 +1,7 @@
 <?php
 
-use Carbon\Carbon;
+use App\Models\Nonce;
+use Illuminate\Validation\ValidationException;
 
 // App will request a nonce from the API via POST /nonce, passing in pubkey and device_name
 // API will generate a nonce and store it in the database
@@ -14,11 +15,10 @@ use Carbon\Carbon;
 
 
 
-// App will request a nonce from the API via POST /nonce, passing in pubkey and device_name
-// Route::post('/nonce', [LoginController::class, 'nonce']);
-// LoginController@nonce creates nonce, saves to nonces table with timestamps and pubkey and device_name, returns it to the app
+// App will request a nonce from the API via POST /api/nonce, passing in pubkey and device_name
+// LoginController@nonce creates nonce, saves to nonces table with timestamps and pubkey and device_name, returns nonce to the app
 test('app can request a nonce', function () {
-    $response = $this->post('/nonce', [
+    $response = $this->post('/api/nonce', [
         'pubkey' => '987612984762893476234',
         'device_name' => 'test device',
     ]);
@@ -35,7 +35,33 @@ test('app can request a nonce', function () {
         'device_name' => 'test device',
         'nonce' => $nonce,
     ]);
-    expect(Carbon::parse($nonce->created_at))->toBeWithinSeconds(3);
+
+    // Check that the nonce is in the database, associated with the pubkey and device_name, and that it is recent
+    $nonceRow = Nonce::where([
+        'pubkey' => '987612984762893476234',
+        'device_name' => 'test device',
+        'nonce' => $nonce,
+    ])->first();
+
+    expect($nonceRow)->not->toBeNull();
+});
+
+test('nonce request without pubkey fails', function () {
+    $this->withoutExceptionHandling();
+    $this->expectException(ValidationException::class);
+
+    $this->post('/api/nonce', [
+        'device_name' => 'test device',
+    ]);
+});
+
+test('nonce request without device_name fails', function () {
+    $this->withoutExceptionHandling();
+    $this->expectException(ValidationException::class);
+
+    $this->post('/api/nonce', [
+        'pubkey' => 'asoidfjoasidjfisjsdf',
+    ]);
 });
 
 

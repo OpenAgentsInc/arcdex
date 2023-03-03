@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Models\Channel;
 use App\Models\Message;
 use Illuminate\Http\Request;
@@ -15,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+Route::post('/nonce', [LoginController::class, 'nonce']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

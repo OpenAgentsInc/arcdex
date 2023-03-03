@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nonce;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 
 class LoginController extends Controller
@@ -12,6 +14,33 @@ class LoginController extends Controller
     public function index()
     {
         return Inertia::render('Login');
+    }
+
+    public function nonce(Request $request)
+    {
+        // validate request has pubkey and device_name as strings
+        try {
+            $request->validate([
+                'pubkey' => 'required',
+                'device_name' => 'required',
+            ]);
+        } catch (\Exception $e) {
+            throw ValidationException::withMessages([
+                'pubkey' => 'The pubkey field is required.',
+            ]);
+        }
+
+        $nonce = bin2hex(random_bytes(32));
+
+        Nonce::create([
+            'nonce' => $nonce,
+            'pubkey' => $request->pubkey,
+            'device_name' => $request->device_name
+        ]);
+
+        return [
+            'nonce' => $nonce
+        ];
     }
 
     public function apiLogin(Request $request)
