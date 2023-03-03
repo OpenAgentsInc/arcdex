@@ -30,7 +30,10 @@
     "laravel/telescope": "4.x-dev",
     "laravel/tinker": "^2.8",
     "league/flysystem-aws-s3-v3": "^3.12",
+    "mdanter/ecc": "^1.0",
+    "phpseclib/phpseclib": "~3.0",
     "pion/laravel-chunk-upload": "dev-patch-1",
+    "simplito/elliptic-php": "dev-master",
     "spatie/pest-plugin-test-time": "^1.1",
     "textalk/websocket": "^1.6"
   },

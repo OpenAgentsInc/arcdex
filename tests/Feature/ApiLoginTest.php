@@ -1,5 +1,6 @@
 <?php
 
+use App\Exceptions\ProofException;
 use App\Models\Nonce;
 use Illuminate\Validation\ValidationException;
 
@@ -129,6 +130,18 @@ test('login request without proof fails', function () {
     $this->post('/api/login', [
         'pubkey' => 'askdfjhaksdjfhkasjdhfkjsadhf',
         'device_name' => 'test device',
+        'nonce' => 'asdofsodifjo2i3jfo2'
+    ]);
+});
+
+test('login request without valid proof fails', function () {
+    $this->withoutExceptionHandling();
+    $this->expectException(ProofException::class);
+
+    $this->post('/api/login', [
+        'pubkey' => 'askdfjhaksdjfhkasjdhfkjsadhf',
+        'device_name' => 'test device',
+        'proof' => 'f23f23f23f23f23f23f23f',
         'nonce' => 'asdofsodifjo2i3jfo2'
     ]);
 });
