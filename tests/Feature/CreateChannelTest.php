@@ -13,6 +13,7 @@ test('user can create a channel', function () {
     $response = $this->post('/api/channels', [
         'title' => 'Test Channel',
         'eventid' => 'test-event-id',
+        'about' => 'test about',
         'relayurl' => 'https://test-relay-url.com'
     ]);
 

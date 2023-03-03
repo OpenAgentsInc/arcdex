@@ -14,6 +14,7 @@ class ChannelController extends Controller
         $validation = Request::validate([
             'title' => ['required', 'max:50'],
             'eventid' => ['required'],
+            'about' => ['required'],
             'relayurl' => ['required'],
         ]);
 
