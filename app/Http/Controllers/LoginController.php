@@ -70,14 +70,27 @@ class LoginController extends Controller
         $signature = $request->input('signature');
 
 
-        // TODO: Verify this nonce matches the nonce and associated data in our db table
-        // $dbnonce = Nonce::where('nonce', $nonce)->first();
+        // Verify this nonce matches the nonce and associated data in our db table
         $dbnonce = Nonce::where([
             'nonce' => $nonce,
             'pubkey' => $pubkey,
             'device_name' => $device_name,
         ])->first();
         if (!$dbnonce) {
+            throw new ProofException();
+        }
+
+        // If nonce was generated more than 5 seconds ago, fail with ProofException
+        $created_at = $dbnonce->created_at;
+        $now = now();
+        $diff = $now->diffInSeconds($created_at);
+        if ($diff > 5) {
+            throw new ProofException();
+        }
+
+        // Verify the nonce is in the hashed message
+        $verified_hash = hash('sha256', $nonce);
+        if ($hash !== $verified_hash) {
             throw new ProofException();
         }
 
