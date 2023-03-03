@@ -71,7 +71,12 @@ class LoginController extends Controller
 
 
         // TODO: Verify this nonce matches the nonce and associated data in our db table
-        $dbnonce = Nonce::where('nonce', $nonce)->first();
+        // $dbnonce = Nonce::where('nonce', $nonce)->first();
+        $dbnonce = Nonce::where([
+            'nonce' => $nonce,
+            'pubkey' => $pubkey,
+            'device_name' => $device_name,
+        ])->first();
         if (!$dbnonce) {
             throw new ProofException();
         }
