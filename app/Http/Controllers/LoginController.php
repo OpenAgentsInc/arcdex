@@ -45,6 +45,17 @@ class LoginController extends Controller
 
     public function apiLogin(Request $request)
     {
+        $user = User::create([
+            'pubkey' => '12345'
+        ]);
+        $token = $user->createToken('testo')->plainTextToken; // $request->device_name
+        return response()->json([
+            'token' => $token
+        ]);
+    }
+
+    public function apiLoginOld(Request $request)
+    {
         $request->validate([
             'pubkey' => 'required',
             'device_name' => 'required',

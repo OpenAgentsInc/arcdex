@@ -54,7 +54,7 @@ Route::any('/logout', function () {
 })->name('logout');
 
 
-Route::post('/sanctum/token', [LoginController::class, 'apiLogin']);
+Route::post('/sanctum/token', [LoginController::class, 'apiLoginOld']);
 
 
 Route::post('/login', function (Request $request) {

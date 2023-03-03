@@ -6,27 +6,14 @@ use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
-
 Route::post('/nonce', [LoginController::class, 'nonce']);
+Route::post('/login', [LoginController::class, 'apiLogin']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 Route::middleware('auth:sanctum')->get('/demo', function (Request $request) {
-
-    // create five dummy channels via factory
-    // $channels = Channel::factory()->count(5)->make();
     $channels = $request->user()->channels;
 
     return [

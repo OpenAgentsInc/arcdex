@@ -68,12 +68,22 @@ test('nonce request without device_name fails', function () {
 test('user can log in via api', function () {
     $this->withoutExceptionHandling();
 
+    // assert there are no personal access tokens in database
+    $this->assertDatabaseCount('personal_access_tokens', 0);
+
     $response = $this->post('/api/login', [
         'pubkey' => 'askdfjhaksdjfhkasjdhfkjsadhf',
         'device_name' => 'test device',
         'proof' => 'f23f23f23f23f23f23f23f',
         'nonce' => 'asdofsodifjo2i3jfo2'
     ]);
+
+    // assert that a string token was returned
+    $token = $response->json('token');
+    expect($token)->toBeString();
+
+    // assert that a new token was created in the database
+    $this->assertDatabaseCount('personal_access_tokens', 1);
 
     $response->assertStatus(200)
         ->assertJsonStructure(['token']);
