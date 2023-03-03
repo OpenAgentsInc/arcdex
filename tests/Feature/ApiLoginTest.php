@@ -66,17 +66,19 @@ test('nonce request without device_name fails', function () {
 });
 
 
-test('user can log in via api', function () {
+test('valid user can log in via api', function () {
     $this->withoutExceptionHandling();
 
     // assert there are no personal access tokens in database
     $this->assertDatabaseCount('personal_access_tokens', 0);
 
     $response = $this->post('/api/login', [
-        'pubkey' => 'askdfjhaksdjfhkasjdhfkjsadhf',
-        'device_name' => 'test device',
-        'proof' => 'f23f23f23f23f23f23f23f',
-        'nonce' => 'asdofsodifjo2i3jfo2'
+        'device_name' => 'Test Device Name',
+        'hash' => 'ae43d1c024412436da0e2a311370a727de05f16a4f4b6889cf9eaaa14e41b932',
+        'nonce' => '49c2050ff9587680beab656ac74b361cfc67753208169bdef43c135240738ccf',
+        'pubkey' => '73fd1e67ef2155429f908247be047d500a75b70fe73bbd0130a8312a35b447e7',
+        'secp_pubkey' => '0473fd1e67ef2155429f908247be047d500a75b70fe73bbd0130a8312a35b447e7a97b3f845fe2ac988103db2acfd1d5727245ae4b277a1f98507cb85754fadec8',
+        'signature' => '304402200facd06d67efc04a944e34c88de32075bad54662fbf9aad5aa902e5e77cf85d002207e94afd5334c7349cd584f8995a11305092a28ff3ab7ef4710fb4c4244aafb76',
     ]);
 
     // assert that a string token was returned
@@ -96,8 +98,23 @@ test('login request without pubkey fails', function () {
 
     $this->post('/api/login', [
         'device_name' => 'test device',
-        'proof' => 'f23f23f23f23f23f23f23f',
-        'nonce' => 'asdofsodifjo2i3jfo2'
+        'hash' => 'ufhjojasdfhoasudhfiuashdfsdf',
+        'nonce' => 'asdofsodifjo2i3jfo2',
+        'secp_pubkey' => 'asdf23f23f23f2f',
+        'signature' => 'f23f23f23f23f23f23f23f',
+    ]);
+});
+
+test('login request without secp_pubkey fails', function () {
+    $this->withoutExceptionHandling();
+    $this->expectException(ValidationException::class);
+
+    $this->post('/api/login', [
+        'device_name' => 'test device',
+        'hash' => 'ufhjojasdfhoasudhfiuashdfsdf',
+        'nonce' => 'asdofsodifjo2i3jfo2',
+        'pubkey' => 'asdf23f23f23f2f',
+        'signature' => 'f23f23f23f23f23f23f23f',
     ]);
 });
 
@@ -106,9 +123,11 @@ test('login request without nonce fails', function () {
     $this->expectException(ValidationException::class);
 
     $this->post('/api/login', [
-        'pubkey' => 'askdfjhaksdjfhkasjdhfkjsadhf',
         'device_name' => 'test device',
-        'proof' => 'f23f23f23f23f23f23f23f',
+        'hash' => 'ufhjojasdfhoasudhfiuashdfsdf',
+        'pubkey' => 'askdfjhaksdjfhkasjdhfkjsadhf',
+        'secp_pubkey' => 'asdf23f23f23f2f',
+        'signature' => 'f23f23f23f23f23f23f23f',
     ]);
 });
 
@@ -117,31 +136,37 @@ test('login request without device_name fails', function () {
     $this->expectException(ValidationException::class);
 
     $this->post('/api/login', [
+        'hash' => 'ufhjojasdfhoasudhfiuashdfsdf',
+        'nonce' => 'asdofsodifjo2i3jfo2',
         'pubkey' => 'askdfjhaksdjfhkasjdhfkjsadhf',
-        'proof' => 'f23f23f23f23f23f23f23f',
-        'nonce' => 'asdofsodifjo2i3jfo2'
+        'secp_pubkey' => 'asdf23f23f23f2f',
+        'signature' => 'f23f23f23f23f23f23f23f',
     ]);
 });
 
-test('login request without proof fails', function () {
+test('login request without signature fails', function () {
     $this->withoutExceptionHandling();
     $this->expectException(ValidationException::class);
 
     $this->post('/api/login', [
-        'pubkey' => 'askdfjhaksdjfhkasjdhfkjsadhf',
         'device_name' => 'test device',
-        'nonce' => 'asdofsodifjo2i3jfo2'
+        'hash' => 'ufhjojasdfhoasudhfiuashdfsdf',
+        'nonce' => 'asdofsodifjo2i3jfo2',
+        'pubkey' => 'askdfjhaksdjfhkasjdhfkjsadhf',
+        'secp_pubkey' => 'asdf23f23f23f2f',
     ]);
 });
 
-test('login request without valid proof fails', function () {
+test('login request without valid signature fails', function () {
     $this->withoutExceptionHandling();
     $this->expectException(ProofException::class);
 
     $this->post('/api/login', [
-        'pubkey' => 'askdfjhaksdjfhkasjdhfkjsadhf',
         'device_name' => 'test device',
-        'proof' => 'f23f23f23f23f23f23f23f',
-        'nonce' => 'asdofsodifjo2i3jfo2'
+        'hash' => 'ufhjojasdfhoasudhfiuashdfsdf',
+        'nonce' => 'asdofsodifjo2i3jfo2',
+        'pubkey' => 'askdfjhaksdjfhkasjdhfkjsadhf',
+        'secp_pubkey' => 'asdf23f23f23f2f',
+        'signature' => 'f23f23f23f23f23f23f23f',
     ]);
 });
