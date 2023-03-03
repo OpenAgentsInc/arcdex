@@ -65,9 +65,27 @@ test('nonce request without device_name fails', function () {
     ]);
 });
 
+test('valid user with invalid nonce cannot log in', function () {
+    $this->withoutExceptionHandling();
+
+    // assert there are no personal access tokens in database
+    $this->expectException(ProofException::class);
+    $this->assertDatabaseCount('personal_access_tokens', 0);
+
+    $this->post('/api/login', [
+        'device_name' => 'Test Device Name',
+        'hash' => 'ae43d1c024412436da0e2a311370a727de05f16a4f4b6889cf9eaaa14e41b932',
+        'nonce' => '49casdasfdasdfef43c135240738ccf',
+        'pubkey' => '73fd1e67ef2155429f908247be047d500a75b70fe73bbd0130a8312a35b447e7',
+        'secp_pubkey' => '0473fd1e67ef2155429f908247be047d500a75b70fe73bbd0130a8312a35b447e7a97b3f845fe2ac988103db2acfd1d5727245ae4b277a1f98507cb85754fadec8',
+        'signature' => '304402200facd06d67efc04a944e34c88de32075bad54662fbf9aad5aa902e5e77cf85d002207e94afd5334c7349cd584f8995a11305092a28ff3ab7ef4710fb4c4244aafb76',
+    ]);
+});
 
 test('valid user can log in via api', function () {
-    $this->withoutExceptionHandling();
+    $nonce = '49c2050ff9587680beab656ac74b361cfc67753208169bdef43c135240738ccf';
+    Nonce::factory()->create(['nonce' => $nonce]);
+    $this->assertDatabaseCount('nonces', 1);
 
     // assert there are no personal access tokens in database
     $this->assertDatabaseCount('personal_access_tokens', 0);
@@ -75,7 +93,7 @@ test('valid user can log in via api', function () {
     $response = $this->post('/api/login', [
         'device_name' => 'Test Device Name',
         'hash' => 'ae43d1c024412436da0e2a311370a727de05f16a4f4b6889cf9eaaa14e41b932',
-        'nonce' => '49c2050ff9587680beab656ac74b361cfc67753208169bdef43c135240738ccf',
+        'nonce' => $nonce,
         'pubkey' => '73fd1e67ef2155429f908247be047d500a75b70fe73bbd0130a8312a35b447e7',
         'secp_pubkey' => '0473fd1e67ef2155429f908247be047d500a75b70fe73bbd0130a8312a35b447e7a97b3f845fe2ac988103db2acfd1d5727245ae4b277a1f98507cb85754fadec8',
         'signature' => '304402200facd06d67efc04a944e34c88de32075bad54662fbf9aad5aa902e5e77cf85d002207e94afd5334c7349cd584f8995a11305092a28ff3ab7ef4710fb4c4244aafb76',
