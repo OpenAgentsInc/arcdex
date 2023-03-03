@@ -88,3 +88,47 @@ test('user can log in via api', function () {
     $response->assertStatus(200)
         ->assertJsonStructure(['token']);
 });
+
+test('login request without pubkey fails', function () {
+    $this->withoutExceptionHandling();
+    $this->expectException(ValidationException::class);
+
+    $this->post('/api/login', [
+        'device_name' => 'test device',
+        'proof' => 'f23f23f23f23f23f23f23f',
+        'nonce' => 'asdofsodifjo2i3jfo2'
+    ]);
+});
+
+test('login request without nonce fails', function () {
+    $this->withoutExceptionHandling();
+    $this->expectException(ValidationException::class);
+
+    $this->post('/api/login', [
+        'pubkey' => 'askdfjhaksdjfhkasjdhfkjsadhf',
+        'device_name' => 'test device',
+        'proof' => 'f23f23f23f23f23f23f23f',
+    ]);
+});
+
+test('login request without device_name fails', function () {
+    $this->withoutExceptionHandling();
+    $this->expectException(ValidationException::class);
+
+    $this->post('/api/login', [
+        'pubkey' => 'askdfjhaksdjfhkasjdhfkjsadhf',
+        'proof' => 'f23f23f23f23f23f23f23f',
+        'nonce' => 'asdofsodifjo2i3jfo2'
+    ]);
+});
+
+test('login request without proof fails', function () {
+    $this->withoutExceptionHandling();
+    $this->expectException(ValidationException::class);
+
+    $this->post('/api/login', [
+        'pubkey' => 'askdfjhaksdjfhkasjdhfkjsadhf',
+        'device_name' => 'test device',
+        'nonce' => 'asdofsodifjo2i3jfo2'
+    ]);
+});

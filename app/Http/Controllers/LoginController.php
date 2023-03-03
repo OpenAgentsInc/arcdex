@@ -18,7 +18,6 @@ class LoginController extends Controller
 
     public function nonce(Request $request)
     {
-        // validate request has pubkey and device_name as strings
         try {
             $request->validate([
                 'pubkey' => 'required',
@@ -26,7 +25,7 @@ class LoginController extends Controller
             ]);
         } catch (\Exception $e) {
             throw ValidationException::withMessages([
-                'pubkey' => 'The pubkey field is required.',
+                'missing' => 'Missing required fields',
             ]);
         }
 
@@ -45,6 +44,19 @@ class LoginController extends Controller
 
     public function apiLogin(Request $request)
     {
+        try {
+            $request->validate([
+                'pubkey' => 'required',
+                'device_name' => 'required',
+                'proof' => 'required',
+                'nonce' => 'required',
+            ]);
+        } catch (\Exception $e) {
+            throw ValidationException::withMessages([
+                'missing' => 'Missing required fields',
+            ]);
+        }
+
         $user = User::create([
             'pubkey' => '12345'
         ]);
