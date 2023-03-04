@@ -220,6 +220,12 @@ class VideoController extends Controller
                 'title' => 'API Handshake via TanStack Query',
                 'subtitle' => "We connect the app to our new API via TanStack Query, showing a list of demo channels the user has joined.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc30_1a1cfb0d81da5744ab7c31b42c6e1f79.mp4'
+            ],
+            [
+                'id' => 31,
+                'title' => 'Securing the API',
+                'subtitle' => "We securely authenticate a Nostr keypair with our new Laravel API. Enjoy 5+ hours of wrestling with nonces, x-only pubkeys, and PHP elliptic curve cryptography libraries.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc31_ac7e24af993ebc8648839b04009da3ba.mov'
             ]
         ];
     }

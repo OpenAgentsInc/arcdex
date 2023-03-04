@@ -107,9 +107,15 @@ class LoginController extends Controller
             throw new ProofException();
         }
 
-        $user = User::create([
-            'pubkey' => $pubkey
-        ]);
+        // First check if a user with this pubkey exists
+        $user = User::where('pubkey', $pubkey)->first();
+        if (!$user) {
+            // Create a user with this pubkey and log them in
+            $user = User::create([
+                'pubkey' => $pubkey
+            ]);
+        }
+
         $token = $user->createToken($device_name)->plainTextToken;
         return response()->json([
             'token' => $token
