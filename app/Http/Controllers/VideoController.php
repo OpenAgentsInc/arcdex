@@ -226,6 +226,12 @@ class VideoController extends Controller
                 'title' => 'Securing the API',
                 'subtitle' => "We securely authenticate a Nostr keypair with our new Laravel API. Enjoy 5+ hours of wrestling with nonces, x-only pubkeys, and PHP elliptic curve cryptography libraries.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc31_ac7e24af993ebc8648839b04009da3ba.mov'
+            ],
+            [
+                'id' => 32,
+                'title' => 'In-App Video Player',
+                'subtitle' => "We add a video player to the app and mock up how we could integrate Nostr chat and Lightning zaps.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc32_ceded7c0aeeb193605e156804db0ae6b.mp4'
             ]
         ];
     }
