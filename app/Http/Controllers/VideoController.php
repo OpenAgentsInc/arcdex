@@ -232,6 +232,12 @@ class VideoController extends Controller
                 'title' => 'In-App Video Player',
                 'subtitle' => "We add a video player to the app and mock up how we could integrate Nostr chat and Lightning zaps.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc32_ceded7c0aeeb193605e156804db0ae6b.mp4'
+            ],
+            [
+                'id' => 33,
+                'title' => 'Saving & Rehydrating the API Token',
+                'subtitle' => "Our most boring video yet. We save the API token to the device keychain, then rehydrate it on app launch.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc33_678962ac821ed0d888b041e78ac83f87.mp4'
             ]
         ];
     }
