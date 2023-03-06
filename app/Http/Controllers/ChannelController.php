@@ -31,7 +31,14 @@ class ChannelController extends Controller
         // CreateNostrChannel::dispatch($channel);
 
         // Redirect back to the chat page
-        return Redirect::route('chat')->with('success', 'Channel created.');
+        // return Redirect::route('chat')->with('success', 'Channel created.');
+        return [
+            'data' => [
+                'id' => $channel->id,
+                'title' => $channel->title,
+                'joined' => true,
+            ]
+        ];
     }
 
     public function show($id) {
