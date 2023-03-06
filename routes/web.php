@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AudioController;
 use App\Http\Controllers\ChannelController;
-use App\Http\Controllers\ChannelMessageController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DependencyUploadController;
 use App\Http\Controllers\DiscoverController;
@@ -37,10 +36,6 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/chat', [ChatController::class, 'index'])->name('chat');
     Route::get('/channel/{channel}', [ChannelController::class, 'show'])->name('channel');
-});
-
-Route::group(['middleware' => 'auth:sanctum'], function () {
-    Route::post('/api/channel/{channel}/messages', [ChannelMessageController::class, 'store']);
 });
 
 Route::get('/video/{id}', [VideoController::class, 'show']);

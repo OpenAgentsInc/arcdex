@@ -9,13 +9,12 @@ test('user can send a message', function () {
 
     $this->actingAs($user);
 
-    $this->post('/api/channel/1/messages', [
-        'content' => 'Hello world',
+    $this->post('/api/channels/1/messages', [
+        'text' => 'Hello world',
         'eventid' => 'test-event-id',
         'relayurl' => 'https://test-relay-url.com'
     ])
-        ->assertStatus(302)
-        ->assertRedirect('/channel/1');
+        ->assertStatus(200);
 
     // assert that the message was created
     $this->assertDatabaseHas('messages', [

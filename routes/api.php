@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChannelController;
+use App\Http\Controllers\ChannelMessageController;
 use App\Http\Controllers\LoginController;
 use App\Models\Message;
 use Illuminate\Http\Request;
@@ -14,6 +15,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/channels', [ChannelController::class, 'store']);
     Route::post('/channels/{channel}/join', [ChannelController::class, 'join']);
     Route::delete('/channels/{channel}/join', [ChannelController::class, 'leave']);
+    Route::post('/channels/{channel}/messages', [ChannelMessageController::class, 'store']);
 });
 
 Route::middleware('auth:sanctum')->get('/messages', function (Request $request) {
