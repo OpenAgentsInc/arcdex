@@ -8,7 +8,6 @@ use App\Http\Controllers\DependencyUploadController;
 use App\Http\Controllers\DiscoverController;
 use App\Http\Controllers\LanderController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\UploadController;
 use App\Http\Controllers\VideoController;
 use App\Models\Channel;
 use App\Models\User;
@@ -93,36 +92,34 @@ Route::post('/login', function (Request $request) {
     ], 200);
 });
 
-Route::middleware('auth:sanctum')->post('/api/channels', [ChannelController::class, 'store']);
+// Route::middleware('auth:sanctum')->get('/api/channels', function (Request $request) {
+//     // Check for joined query param
+//     if ($request->query('joined') === 'false') {
+//         // Retrieve only channels that the user has not joined, and eager load the last message
+//         $channels = Channel::whereDoesntHave('users', function ($q) use ($request) {
+//             $q->where('user_id', $request->user()->id);
+//         })->with(['messages' => function($q) {
+//             $q->latest();
+//         }])->get();
+//     } else {
+//         // Retrieve only channels that the user has joined, and eager load the last message
+//         $channels = $request->user()->channels()->with(['messages' => function($q) {
+//             $q->latest();
+//         }])->get();
+//     }
 
-Route::middleware('auth:sanctum')->get('/api/channels', function (Request $request) {
-    // Check for joined query param
-    if ($request->query('joined') === 'false') {
-        // Retrieve only channels that the user has not joined, and eager load the last message
-        $channels = Channel::whereDoesntHave('users', function ($q) use ($request) {
-            $q->where('user_id', $request->user()->id);
-        })->with(['messages' => function($q) {
-            $q->latest();
-        }])->get();
-    } else {
-        // Retrieve only channels that the user has joined, and eager load the last message
-        $channels = $request->user()->channels()->with(['messages' => function($q) {
-            $q->latest();
-        }])->get();
-    }
+//     foreach ($channels as $channel) {
+//         try {
+//             $channel['lastMessage'] = $channel->messages->first()->load('user');
+//         } catch (Throwable $e) {
+//             $channel['lastMessage'] = null;
+//         }
+//     }
 
-    foreach ($channels as $channel) {
-        try {
-            $channel['lastMessage'] = $channel->messages->first()->load('user');
-        } catch (Throwable $e) {
-            $channel['lastMessage'] = null;
-        }
-    }
-
-    return [
-        'data' => $channels
-    ];
-});
+//     return [
+//         'data' => $channels
+//     ];
+// });
 
 
 Route::middleware('auth:sanctum')->post('/api/channels/{channel}/join', function (Request $request, Channel $channel) {

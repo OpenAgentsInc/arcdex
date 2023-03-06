@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Channel;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request as RequestFacade;
 use Inertia\Inertia;
+use Throwable;
 
 class ChannelController extends Controller
 {
     public function store()
     {
-        $validation = Request::validate([
+        $validation = RequestFacade::validate([
             'title' => ['required', 'max:50'],
             'eventid' => ['required'],
             'about' => ['required'],
@@ -53,5 +55,50 @@ class ChannelController extends Controller
                 ];
             }),
         ]);
+    }
+
+    // list all user is a member of
+    public function index(Request $request)
+    {
+        $channels = auth()->user()->channels;
+
+        if ($request->query('joined') === 'false') {
+            // Retrieve only channels that the user has not joined, and eager load the last message
+            $channels = Channel::whereDoesntHave('users', function ($q) use ($request) {
+                $q->where('user_id', $request->user()->id);
+            })->with(['messages' => function($q) {
+                $q->latest();
+            }])->get();
+        } else {
+            // Retrieve only channels that the user has joined, and eager load the last message
+            $channels = $request->user()->channels()->with(['messages' => function($q) {
+                $q->latest();
+            }])->get();
+        }
+
+        foreach ($channels as $channel) {
+            try {
+                $channel['lastMessage'] = $channel->messages->first()->load('user');
+            } catch (Throwable $e) {
+                $channel['lastMessage'] = null;
+            }
+        }
+
+        return [
+            'channels' => $channels
+        ];
+    }
+
+    public function leave(Channel $channel, Request $request)
+    {
+        $channel->users()->detach($request->user()->id);
+
+        return [
+            'data' => [
+                'id' => $channel->id,
+                'title' => $channel->title,
+                'joined' => false,
+            ]
+        ];
     }
 }

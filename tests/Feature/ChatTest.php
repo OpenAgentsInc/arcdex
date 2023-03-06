@@ -22,7 +22,7 @@ test('user can join a channel', function () {
 
     // $response->assertStatus(200)
     //     // ->assertJson([
-    //     //     'data' => [
+    //     //     'channels' => [
     //     //         'id' => $channel->id,
     //     //         'title' => $channel->title,
     //     //         'joined' => true,
@@ -45,15 +45,6 @@ test('user can leave a channel', function () {
         'user_id' => $user->id,
         'channel_id' => $channel->id,
     ]);
-
-    // $response->assertStatus(200)
-    //     ->assertJson([
-    //         'data' => [
-    //             'id' => $channel->id,
-    //             'title' => $channel->title,
-    //             'joined' => true,
-    //         ],
-    //     ]);
 
     $response = $this->delete('/api/channels/' . $channel->id . '/join');
 
@@ -84,9 +75,9 @@ test('user can optionally fetch only channels they havent joined', function () {
     $response = $this->get('/api/channels?joined=false');
 
     $response->assertStatus(200)
-        ->assertJsonCount(3, 'data')
+        ->assertJsonCount(3, 'channels')
         ->assertJson([
-            'data' => [
+            'channels' => [
                 [
                     'id' => $channels[1]->id,
                     'title' => $channels[1]->title,
@@ -108,9 +99,9 @@ test('user can optionally fetch only channels they havent joined', function () {
     $response = $this->get('/api/channels?joined=false');
 
     $response->assertStatus(200)
-        ->assertJsonCount(1, 'data')
+        ->assertJsonCount(1, 'channels')
         ->assertJson([
-            'data' => [
+            'channels' => [
                 [
                     'id' => $channels[3]->id,
                     'title' => $channels[3]->title,
@@ -128,16 +119,16 @@ test('user can fetch only channels theyve joined', function () {
     $response = $this->get('/api/channels');
 
     $response->assertStatus(200)
-        ->assertJsonCount(0, 'data');
+        ->assertJsonCount(0, 'channels');
 
     $channels[0]->users()->syncWithoutDetaching($user->id);
 
     $response = $this->get('/api/channels');
 
     $response->assertStatus(200)
-        ->assertJsonCount(1, 'data')
+        ->assertJsonCount(1, 'channels')
         ->assertJson([
-            'data' => [
+            'channels' => [
                 [
                     'id' => $channels[0]->id,
                     'title' => $channels[0]->title,
@@ -151,9 +142,9 @@ test('user can fetch only channels theyve joined', function () {
     $response = $this->get('/api/channels');
 
     $response->assertStatus(200)
-        ->assertJsonCount(3, 'data')
+        ->assertJsonCount(3, 'channels')
         ->assertJson([
-            'data' => [
+            'channels' => [
                 [
                     'id' => $channels[0]->id,
                     'title' => $channels[0]->title,
@@ -184,9 +175,9 @@ test('user can fetch channels with the right data', function () {
     $response = $this->get('/api/channels');
 
     $response->assertStatus(200)
-        ->assertJsonCount(4, 'data')
+        ->assertJsonCount(4, 'channels')
         ->assertJsonStructure([
-            'data' => [
+            'channels' => [
                 '*' => [
                     'id',
                     'title',
@@ -203,7 +194,7 @@ test('user can fetch channels with the right data', function () {
             ],
         ])
         ->assertJson([
-            'data' => [
+            'channels' => [
                 [
                     'id' => 1,
                     'title' => $channels[0]->title,
@@ -268,9 +259,9 @@ test('user can fetch messages with the right data', function () {
     $response = $this->get('/api/messages');
 
     $response->assertStatus(200)
-        ->assertJsonCount(5, 'data')
+        ->assertJsonCount(5, 'messages')
         ->assertJsonStructure([
-            'data' => [
+            'messages' => [
                 '*' => [
                     'id',
                     'content',
@@ -282,7 +273,7 @@ test('user can fetch messages with the right data', function () {
             ],
         ])
         ->assertJson([
-            'data' => [
+            'messages' => [
                 [
                     'id' => 1,
                     'content' => $messages[0]->content,

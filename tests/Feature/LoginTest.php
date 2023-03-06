@@ -49,7 +49,7 @@ test('login endpoint logs in a user', function () {
     $this->get('/api/channels')
         ->assertStatus(200)
         ->assertJsonStructure([
-            'data' => [
+            'channels' => [
                 '*' => [
                     'id',
                     'title',
