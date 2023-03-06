@@ -244,6 +244,12 @@ class VideoController extends Controller
                 'title' => 'Listing Joined & Unjoined Channels',
                 'subtitle' => "We connect the app to our new channels API endpoint, showing lists of channels the user has joined and not.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc34_3d5aa4cfbb84720af2515e47fdb06374.mp4'
+            ],
+            [
+                'id' => 35,
+                'title' => 'Joining, Leaving & Creating Channels',
+                'subtitle' => "We connect the app to more API endpoints, allowing the user to join, leave, and create channels.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc35_9507b5eea06ae218c49859544c2da0ca.mp4'
             ]
         ];
     }
