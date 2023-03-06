@@ -7,6 +7,23 @@ use Illuminate\Http\Request;
 
 class ChannelMessageController extends Controller
 {
+    public function index(Channel $channel) {
+        $messages = $channel->messages()->with('user')->get();
+        $filtered = $messages->map(function ($message) {
+            return [
+                'id' => $message->id,
+                'content' => $message->content,
+                'user' => [
+                    'id' => $message->user->id,
+                    'name' => $message->user->name,
+                ],
+            ];
+        });
+        return [
+            'messages' => $filtered,
+        ];
+    }
+
     public function store (Request $request, Channel $channel) {
         $channel->messages()->create([
             'user_id' => auth()->user()->id,

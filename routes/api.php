@@ -13,5 +13,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/channels', [ChannelController::class, 'store']);
     Route::post('/channels/{channel}/join', [ChannelController::class, 'join']);
     Route::delete('/channels/{channel}/join', [ChannelController::class, 'leave']);
+    Route::get('/channels/{channel}/messages', [ChannelMessageController::class, 'index']);
     Route::post('/channels/{channel}/messages', [ChannelMessageController::class, 'store']);
 });
