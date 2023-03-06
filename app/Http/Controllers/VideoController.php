@@ -238,6 +238,12 @@ class VideoController extends Controller
                 'title' => 'Saving & Rehydrating the API Token',
                 'subtitle' => "Our most boring video yet. We save the API token to the device keychain, then rehydrate it on app launch.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc33_678962ac821ed0d888b041e78ac83f87.mp4'
+            ],
+            [
+                'id' => 34,
+                'title' => 'Listing Joined & Unjoined Channels',
+                'subtitle' => "We connect the app to our new channels API endpoint, showing lists of channels the user has joined and not.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc34_3d5aa4cfbb84720af2515e47fdb06374.mp4'
             ]
         ];
     }
