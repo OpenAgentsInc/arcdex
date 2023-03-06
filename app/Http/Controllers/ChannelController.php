@@ -89,6 +89,19 @@ class ChannelController extends Controller
         ];
     }
 
+    public function join(Channel $channel, Request $request)
+    {
+        $channel->users()->syncWithoutDetaching($request->user()->id);
+
+        return [
+            'data' => [
+                'id' => $channel->id,
+                'title' => $channel->title,
+                'joined' => true,
+            ]
+        ];
+    }
+
     public function leave(Channel $channel, Request $request)
     {
         $channel->users()->detach($request->user()->id);

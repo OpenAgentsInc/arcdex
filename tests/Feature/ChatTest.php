@@ -12,7 +12,7 @@ test('user can join a channel', function () {
 
     $response = $this->post('/api/channels/' . $channel->id . '/join');
 
-    $response->assertRedirect();
+    // $response->assertRedirect();
 
     // assert we see the channel in the user's channels
     $this->assertDatabaseHas('channel_user', [
@@ -20,14 +20,14 @@ test('user can join a channel', function () {
         'channel_id' => $channel->id,
     ]);
 
-    // $response->assertStatus(200)
-    //     // ->assertJson([
-    //     //     'channels' => [
-    //     //         'id' => $channel->id,
-    //     //         'title' => $channel->title,
-    //     //         'joined' => true,
-    //     //     ],
-    //     // ]);
+    $response->assertStatus(200)
+        ->assertJson([
+            'data' => [
+                'id' => $channel->id,
+                'title' => $channel->title,
+                'joined' => true,
+            ],
+        ]);
 });
 
 test('user can leave a channel', function () {
@@ -37,8 +37,14 @@ test('user can leave a channel', function () {
     $this->actingAs($user);
 
     $response = $this->post('/api/channels/' . $channel->id . '/join');
-
-    $response->assertRedirect();
+    $response->assertStatus(200)
+        ->assertJson([
+            'data' => [
+                'id' => $channel->id,
+                'title' => $channel->title,
+                'joined' => true,
+            ],
+        ]);
 
     // assert we see the channel in the user's channels
     $this->assertDatabaseHas('channel_user', [

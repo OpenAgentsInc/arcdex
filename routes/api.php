@@ -12,6 +12,7 @@ Route::post('/login', [LoginController::class, 'apiLogin']);
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/channels', [ChannelController::class, 'index']);
     Route::post('/channels', [ChannelController::class, 'store']);
+    Route::post('/channels/{channel}/join', [ChannelController::class, 'join']);
     Route::delete('/channels/{channel}/join', [ChannelController::class, 'leave']);
 });
 
