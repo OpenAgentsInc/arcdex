@@ -57,7 +57,7 @@ export const DarkHero = () => {
             Connect freely.
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-300">
-            Chat and pay at the speed of Lightning on Nostr.
+            Chat at the speed of Lightning on Nostr.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-6">
             <a
