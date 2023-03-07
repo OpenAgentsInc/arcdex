@@ -10,14 +10,12 @@ class ChannelMessageController extends Controller
     public function index(Channel $channel) {
         $messages = $channel->messages()->with('user')->get();
         $filtered = $messages->map(function ($message) {
-            return [
+           return [
                 'id' => $message->id,
                 'content' => $message->content,
-                'user' => [
-                    'id' => $message->user->id,
-                    'name' => $message->user->name,
-                ],
-            ];
+                'pubkey' => $message->user->pubkey,
+                'created_at' => $message->created_at,
+           ];
         });
         return [
             'messages' => $filtered,

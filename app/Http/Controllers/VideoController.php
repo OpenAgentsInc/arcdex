@@ -250,6 +250,12 @@ class VideoController extends Controller
                 'title' => 'Joining, Leaving & Creating Channels',
                 'subtitle' => "We connect the app to more API endpoints, allowing the user to join, leave, and create channels.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc35_9507b5eea06ae218c49859544c2da0ca.mp4'
+            ],
+            [
+                'id' => 36,
+                'title' => 'Sending & Retrieving Messages',
+                'subtitle' => "We connect a few more API endpoints and can now send and retrieve channel messages in the mobile app.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc36_160b45023ea26c5be2018b6626b4c6eb.mp4'
             ]
         ];
     }

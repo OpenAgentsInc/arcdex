@@ -3,6 +3,7 @@
 use App\Models\Channel;
 use App\Models\Message;
 use App\Models\User;
+use Carbon\Carbon;
 
 test('user can retrieve messages for a channel they are in', function () {
     $user = User::factory()->create();
@@ -24,10 +25,8 @@ test('user can retrieve messages for a channel they are in', function () {
                 [
                     'id' => $message->id,
                     'content' => $message->content,
-                    'user' => [
-                        'id' => $user->id,
-                        'name' => $user->name,
-                    ],
+                    'pubkey' => $user->pubkey,
+                    'created_at' => Carbon::parse($message->created_at)->format('Y-m-d\TH:i:s.u\Z')
                 ],
             ],
         ]);

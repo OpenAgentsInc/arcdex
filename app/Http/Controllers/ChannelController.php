@@ -33,9 +33,14 @@ class ChannelController extends Controller
         // Redirect back to the chat page
         // return Redirect::route('chat')->with('success', 'Channel created.');
         return [
-            'data' => [
+            'channel' => [
                 'id' => $channel->id,
                 'title' => $channel->title,
+                'relayurl' => $channel->relayurl,
+                'eventid' => $channel->eventid,
+                'about' => $channel->about,
+                'picture' => $channel->picture,
+                'created_at' => $channel->created_at,
                 'joined' => true,
             ]
         ];
