@@ -263,6 +263,18 @@ class VideoController extends Controller
                 'subtitle' => "We connect the app to our production database and say hello in a few pre-existing Nostr channels.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc37_e98446e7a386fd1c8ecb6e95fee1c355.mp4'
             ],
+            [
+                'id' => 38,
+                'title' => 'Indexer Planning',
+                'subtitle' => "We discuss our need for an event indexer and plan to build a new one using Rust.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc38-1080_4fa01f99e678078ef0a98cff9ebd9794.mov'
+            ],
+            [
+                'id' => 39,
+                'title' => 'Indexer Connects to Relays',
+                'subtitle' => "Our new Rust indexer successfully connects to relays and subscribes to events.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc39-1080_03d40c3e97fd3f237fdb5e47430d011d.mov'
+            ],
         ];
     }
 }
