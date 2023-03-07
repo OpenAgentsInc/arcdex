@@ -254,7 +254,7 @@ class VideoController extends Controller
             [
                 'id' => 36,
                 'title' => 'Sending & Retrieving Messages',
-                'subtitle' => "We connect a few more API endpoints and can now send and retrieve channel messages in the mobile app.",
+                'subtitle' => "We connect a few more API endpoints and can now send and retrieve NIP-28 chat messages in the mobile app.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc36_160b45023ea26c5be2018b6626b4c6eb.mp4'
             ]
         ];
