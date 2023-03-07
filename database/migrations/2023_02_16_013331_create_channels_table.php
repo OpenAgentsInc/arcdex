@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('about');
+            $table->string('picture');
             $table->string('eventid')->unique();
             $table->string('relayurl');
             $table->timestamps();

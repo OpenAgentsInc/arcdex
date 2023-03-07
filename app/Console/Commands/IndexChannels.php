@@ -62,6 +62,7 @@ class IndexChannels extends Command
                 $channel = Channel::create([
                     'title' => $content['name'] ?? '',
                     'about' => $content['about'] ?? '',
+                    'picture' => $content['picture'] ?? '',
                     'relayurl' => $relayUrl,
                     'eventid' => $data['id'],
                 ]);
@@ -69,6 +70,7 @@ class IndexChannels extends Command
                 array_push($channels, $channel);
                 $this->info("Indexed channel: {$content['name']}");
             } catch (\Illuminate\Database\QueryException $e) {
+                // dd($e->getMessage());
                 // $this->warn("Channel already exists: {$content['name']}");
             }
         }
