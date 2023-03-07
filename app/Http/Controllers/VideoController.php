@@ -256,7 +256,13 @@ class VideoController extends Controller
                 'title' => 'Sending & Retrieving Messages',
                 'subtitle' => "We connect a few more API endpoints and can now send and retrieve NIP-28 chat messages in the mobile app.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc36_160b45023ea26c5be2018b6626b4c6eb.mp4'
-            ]
+            ],
+            [
+                'id' => 37,
+                'title' => 'Hello Nostr',
+                'subtitle' => "We connect the app to our production database and say hello in a few pre-existing Nostr channels.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc37_e98446e7a386fd1c8ecb6e95fee1c355.mp4'
+            ],
         ];
     }
 }
