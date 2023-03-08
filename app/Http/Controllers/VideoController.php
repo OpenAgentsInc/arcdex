@@ -275,6 +275,12 @@ class VideoController extends Controller
                 'subtitle' => "Our new Rust indexer successfully connects to relays and subscribes to events.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc39-1080_03d40c3e97fd3f237fdb5e47430d011d.mov'
             ],
+            [
+                'id' => 40,
+                'title' => 'Indexer Saves Events to Database',
+                'subtitle' => "Our new indexer saves 1000+ Nostr events to a PlanetScale MySQL database.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc40.mov'
+            ]
         ];
     }
 }
