@@ -284,7 +284,7 @@ class VideoController extends Controller
             [
                 'id' => 41,
                 'title' => 'Indexer UI & Finding Relays',
-                'subtitle' => "The indexer UI now shows the number of indexed events, updating every second. And we use NIP-65 to build a list of 200+ relays to index.",
+                'subtitle' => "The indexer UI now shows the number of indexed events, updating every second. And we use NIP-65 to build a list of 200+ relays we'll index next.",
                 "url" => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc41rush_20be598e89880f431597a427acb6ccd5.mp4'
             ]
         ];
