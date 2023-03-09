@@ -280,6 +280,12 @@ class VideoController extends Controller
                 'title' => 'Indexer Saves Events to Database',
                 'subtitle' => "Our new indexer saves 1000+ Nostr events to a PlanetScale MySQL database.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/arc40.mov'
+            ],
+            [
+                'id' => 41,
+                'title' => 'Indexer UI & Finding Relays',
+                'subtitle' => "The indexer UI now shows the number of indexed events, updating every second. And we use NIP-65 to build a list of 200+ relays to index.",
+                "url" => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc41rush_20be598e89880f431597a427acb6ccd5.mp4'
             ]
         ];
     }
