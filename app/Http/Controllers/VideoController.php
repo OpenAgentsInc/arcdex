@@ -298,6 +298,12 @@ class VideoController extends Controller
                 'title' => 'Indexer Lists Connected Relays',
                 'subtitle' => "We list all connected relays on the indexer UI, updating instantly when connection status changes.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc43_f76f7f592a3e52245de5b3a2df98d29c.mp4'
+            ],
+            [
+                'id' => 44,
+                'title' => 'Rewrite It In Rust?',
+                'subtitle' => 'We explore the indexed messages and brainstorm about rewriting our API in Rust.',
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc44_e36328dc32a831f023c8cdce41998377.mp4'
             ]
         ];
     }
