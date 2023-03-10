@@ -292,6 +292,12 @@ class VideoController extends Controller
                 'title' => 'Indexing 150K+ Chat Messages',
                 'subtitle' => 'We loop through our list of ~200 relays and index 150,000+ NIP-28 chat messages.',
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc42rush_563eef1248abd4a758a4e7de18eef8ca.mp4'
+            ],
+            [
+                'id' => 43,
+                'title' => 'Indexer Lists Connected Relays',
+                'subtitle' => "We list all connected relays on the indexer UI, updating instantly when connection status changes.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc43_f76f7f592a3e52245de5b3a2df98d29c.mp4'
             ]
         ];
     }
