@@ -302,7 +302,7 @@ class VideoController extends Controller
             [
                 'id' => 44,
                 'title' => 'Rewrite It In Rust?',
-                'subtitle' => 'We explore the indexed messages and brainstorm about rewriting our API in Rust.',
+                'subtitle' => 'We explore the indexed messages and brainstorm rewriting our API in Rust.',
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc44_e36328dc32a831f023c8cdce41998377.mp4'
             ]
         ];
