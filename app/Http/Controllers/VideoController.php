@@ -310,6 +310,12 @@ class VideoController extends Controller
                 'title' => 'Finalizing v0.0.4',
                 'subtitle' => 'We finalize phase one of our API refactor and build v0.0.4 for Android & iOS release.',
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc45_54db16377a5f913203d770035535973d.mp4'
+            ],
+            [
+                'id' => 46,
+                'title' => 'Hello Nostr Development Kit',
+                'subtitle' => 'We explore the new Nostr Development Kit (NDK) and complete its Hello World tutorial in a fresh Tauri app.',
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc46_2d3b1da1f07d9d683f1e55846c458645.mp4'
             ]
         ];
     }
