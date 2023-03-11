@@ -304,6 +304,12 @@ class VideoController extends Controller
                 'title' => 'Rewrite It In Rust?',
                 'subtitle' => 'We explore the indexed messages and brainstorm rewriting our API in Rust.',
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc44_e36328dc32a831f023c8cdce41998377.mp4'
+            ],
+            [
+                'id' => 45,
+                'title' => 'Finalizing v0.0.4',
+                'subtitle' => 'We finalize phase one of our API refactor and build v0.0.4 for Android & iOS release.',
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc45_54db16377a5f913203d770035535973d.mp4'
             ]
         ];
     }
