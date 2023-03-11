@@ -14,7 +14,7 @@ export const DarkHero = () => {
           <img className="h-24" src="/img/logo.png" alt="logo" />
           <div className="mt-12 lg:mt-12">
             <a
-              href="https://github.com/ArcadeLabsInc/arc/releases/tag/v0.0.3-alpha"
+              href="https://github.com/ArcadeLabsInc/arc/releases/tag/v0.0.4-alpha"
               target="_blank"
               className="inline-flex space-x-4"
             >
@@ -45,7 +45,7 @@ export const DarkHero = () => {
                   />
                 </svg>
 
-                <span>v0.0.3 released!</span>
+                <span>v0.0.4 released!</span>
                 <ChevronRightIcon
                   className="h-5 w-5 text-gray-500"
                   aria-hidden="true"
