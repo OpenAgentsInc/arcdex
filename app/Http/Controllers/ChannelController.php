@@ -17,21 +17,16 @@ class ChannelController extends Controller
             'title' => ['required', 'max:50'],
             'eventid' => ['required'],
             'about' => ['required'],
+            'picture' => ['required'],
             'relayurl' => ['required'],
         ]);
 
         // Create a channel in our database
         $channel = Channel::create($validation);
-        // dd($channel);
 
         // User who created the channel is automatically added to the channel
         $channel->users()->attach(auth()->user());
 
-        // Create the channel on Nostr (skipping for now - doing it client-side - may revisit later)
-        // CreateNostrChannel::dispatch($channel);
-
-        // Redirect back to the chat page
-        // return Redirect::route('chat')->with('success', 'Channel created.');
         return [
             'channel' => [
                 'id' => $channel->id,
