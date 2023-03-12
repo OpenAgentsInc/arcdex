@@ -316,6 +316,12 @@ class VideoController extends Controller
                 'title' => 'Hello Nostr Development Kit',
                 'subtitle' => 'We explore the new Nostr Development Kit (NDK) and complete its Hello World tutorial in a fresh Tauri app.',
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc46_2d3b1da1f07d9d683f1e55846c458645.mp4'
+            ],
+            [
+                'id' => 47,
+                'title' => 'Chat Zaps, Part 1',
+                'subtitle' => "We explore the NIP-57 Lightning Zaps spec and extend our Rust app to create an LNURL pay request from a user's Nostr profile.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc47_561fecb439f422ec6331e63b983cd058.mp4'
             ]
         ];
     }
