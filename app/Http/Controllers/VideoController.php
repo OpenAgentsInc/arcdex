@@ -322,6 +322,12 @@ class VideoController extends Controller
                 'title' => 'Chat Zaps, Part 1',
                 'subtitle' => "We explore the NIP-57 Lightning Zaps spec and extend our Rust app to create an LNURL pay request from a user's Nostr profile.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc47_561fecb439f422ec6331e63b983cd058.mp4'
+            ],
+            [
+                'id' => 48,
+                'title' => 'Chat Zaps, Part 2',
+                'subtitle' => "We explore the Damus codebase and rewrite their Zap test in Rust.",
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc48_d464244bf7237413d76e5f95fd7313c8.mp4'
             ]
         ];
     }
