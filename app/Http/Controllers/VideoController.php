@@ -328,6 +328,12 @@ class VideoController extends Controller
                 'title' => 'Chat Zaps, Part 2',
                 'subtitle' => "We explore the Damus codebase and rewrite their Zap test in Rust.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc48_d464244bf7237413d76e5f95fd7313c8.mp4'
+            ],
+            [
+                'id' => 49,
+                'title' => 'Going Universal',
+                'subtitle' => 'We begin converting the main Arc codebase into a cross-platform app (web, mobile & desktop) via create-universal-app.',
+                'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc49_69a31c2a9687a1b648af9b88567852cd.mp4'
             ]
         ];
     }
