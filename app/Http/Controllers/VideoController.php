@@ -338,7 +338,7 @@ class VideoController extends Controller
             [
                 'id' => 50,
                 'title' => 'Starting a Design System',
-                'subtitle' => "We learn about design systems and component-driven development, then start a design showcase where we'll review initial Arc components.",
+                'subtitle' => "We learn about design systems and component-driven development, then start a design showcase where we'll review individual Arc components.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc50_1030de31e3e6e103a63170c9c9d4be32.mp4'
             ]
         ];
