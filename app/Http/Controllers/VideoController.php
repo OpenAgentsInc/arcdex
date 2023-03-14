@@ -340,6 +340,12 @@ class VideoController extends Controller
                 'title' => 'Starting a Design System',
                 'subtitle' => "We learn about design systems and component-driven development, then start a design showcase where we'll review individual Arc components.",
                 'url' => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc50_1030de31e3e6e103a63170c9c9d4be32.mp4'
+            ],
+            [
+                'id' => 51,
+                'title' => 'Exploring GPT-4',
+                'subtitle' => "We explore the new GPT-4 via ChatGPT Pro and evaluate its ability to help with Arc development.",
+                "url" => "https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc51_55384600085c30b4ac3854777e87723e.mp4"
             ]
         ];
     }
