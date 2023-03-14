@@ -344,7 +344,7 @@ class VideoController extends Controller
             [
                 'id' => 51,
                 'title' => 'Exploring GPT-4',
-                'subtitle' => "We explore the new GPT-4 via ChatGPT Pro and evaluate its ability to help with Arc development.",
+                'subtitle' => "We explore the new GPT-4 and evaluate its ability to help with Arc development.",
                 "url" => "https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc51_55384600085c30b4ac3854777e87723e.mp4"
             ]
         ];
