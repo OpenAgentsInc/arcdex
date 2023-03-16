@@ -346,6 +346,12 @@ class VideoController extends Controller
                 'title' => 'Exploring GPT-4',
                 'subtitle' => "We explore the new GPT-4 and evaluate its ability to help with Arc development.",
                 "url" => "https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc51_55384600085c30b4ac3854777e87723e.mp4"
+            ],
+            [
+                'id' => 52,
+                'title' => 'Identifying Fake Nostr Accounts',
+                'subtitle' => 'We submit an OpenAI eval to help GPT-4 identify Nostr spambots, and hopefully earn early access to the GPT-4 API.',
+                "url" => "https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc52_6488d9b1fd9601988bcd394979216880.mp4"
             ]
         ];
     }
