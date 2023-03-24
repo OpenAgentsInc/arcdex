@@ -352,6 +352,12 @@ class VideoController extends Controller
                 'title' => 'Identifying Fake Nostr Accounts',
                 'subtitle' => 'We submit an OpenAI eval to help GPT-4 identify Nostr spambots, and hopefully earn early access to the GPT-4 API.',
                 "url" => "https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc52_6488d9b1fd9601988bcd394979216880.mp4"
+            ],
+            [
+                'id' => 53,
+                'title' => 'Exploring the Signal SDK',
+                'subtitle' => "We review the draft NIPs for encrypted group chat and explore a potential integration of the Signal SDK.",
+                "url" => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc53_b2f551d8936247bea3fdbdbebbddb291.mp4'
             ]
         ];
     }
