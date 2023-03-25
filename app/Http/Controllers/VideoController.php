@@ -358,6 +358,12 @@ class VideoController extends Controller
                 'title' => 'Exploring the Signal SDK',
                 'subtitle' => "We review the draft NIPs for encrypted group chat and explore a potential integration of the Signal SDK.",
                 "url" => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc53_b2f551d8936247bea3fdbdbebbddb291.mp4'
+            ],
+            [
+                'id' => 54,
+                'title' => 'Chat Zaps, Part 3',
+                'subtitle' => "We integrate the NIP-57 Lightning Zaps spec into the Arc mobile app and send our first zaps to a few random Nostr users.",
+                "url" => 'https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc54_5ece62b11c3df8c13d713847703cfa6b.mp4'
             ]
         ];
     }
