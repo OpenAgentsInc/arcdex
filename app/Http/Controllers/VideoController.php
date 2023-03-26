@@ -370,6 +370,12 @@ class VideoController extends Controller
                 'title' => 'Cross-Platform Zaps',
                 'subtitle' => 'We fix our desktop app and send NIP-57 zaps from web, mobile, and desktop.',
                 "url" => "https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc55_43d7ccacf33764576c0620a282fc9c6f.mp4"
+            ],
+            [
+                'id' => 56,
+                'title' => 'Chat Zaps, Part 4',
+                'subtitle' => "We send the first-ever chat zap! Then the second, and the third...",
+                "url" => "https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc56_80a0c5f725d5da0216074b36360b326c.mp4"
             ]
         ];
     }
