@@ -376,7 +376,13 @@ class VideoController extends Controller
                 'title' => 'Chat Zaps, Part 4',
                 'subtitle' => "We send the first-ever chat zap! Then the second, and the third...",
                 "url" => "https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc56_80a0c5f725d5da0216074b36360b326c.mp4"
-            ]
+            ],
+            [
+                'id' => 57,
+                'title' => 'Universal Refactor',
+                'subtitle' => "We pull the rest of the v0.0.4 code into the new cross-platform monorepo, then connect channel messages to our new chat zaps.",
+                "url" => "https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc57_65aea2f45f175459ddaed1ec0d4601c4.mp4"
+            ],
         ];
     }
 }
