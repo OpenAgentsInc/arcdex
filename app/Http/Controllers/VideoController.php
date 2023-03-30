@@ -383,6 +383,12 @@ class VideoController extends Controller
                 'subtitle' => "We pull the rest of the v0.0.4 code into the new cross-platform monorepo, then connect channel messages to our new chat zaps.",
                 "url" => "https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc57_65aea2f45f175459ddaed1ec0d4601c4.mp4"
             ],
+            [
+                'id' => 58,
+                'title' => 'Chat Zaps, Part 5',
+                'subtitle' => 'We pull in user metadata and send zaps to the correct recipients. Chat zaps are now fully functional!',
+                "url" => "https://d22hdgrsmzgwgk.cloudfront.net/uploads/arc58_7eb996910a7b7a4150f651e7cb6f0ad7.mp4"
+            ]
         ];
     }
 }
